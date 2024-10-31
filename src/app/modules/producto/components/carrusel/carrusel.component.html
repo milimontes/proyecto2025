@@ -1,13 +1,17 @@
 <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
+        <!-- Primer item del carrusel -->
         <div class="carousel-item active">
-            <img src="../../../../../assets/Primer_item_carrusel.png" class="d-block w-100" alt="Primer item">
+            <img src="assets/Primer_item_carrusel.png" class="d-block w-100" alt="Primer item">
         </div>
-        <div class="carousel-item" *ngFor="let producto of productosCarrusel">
-            <img src="{{producto.imagen}}" class="d-block w-100" alt="{{producto.alt}}">
+
+        <!-- Items del carrusel generados dinámicamente -->
+        <div class="carousel-item" *ngFor="let producto of productosCarrusel; let isActive = first">
+            <img [src]="producto.imagen" class="d-block w-100" alt="{{producto.alt}}">
         </div>
     </div>
 
+    <!-- Botones de navegación -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -20,7 +24,7 @@
 
 <div class="col">
     <app-card 
-    (productoAgregado)="productoAnadido($event)" 
-    [productoReciente]="product">
+        (productoAgregado)="productoAnadido($event)" 
+        [productoReciente]="product">
     </app-card>
 </div>

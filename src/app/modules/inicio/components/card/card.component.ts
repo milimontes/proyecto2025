@@ -16,7 +16,7 @@ export class CardComponent {
       {
         id: "",
         nombre: "outfits",
-        edad: 5,
+        edad: 0,
         imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxJ532BCOj83JBRPNebSmVXw---v6tmq9sycCqN1CTtSZvW2rcXc_wfsU95DzIAAuSqSI&usqp=CAU",
         alt: "Un outfit de mujer"
       },

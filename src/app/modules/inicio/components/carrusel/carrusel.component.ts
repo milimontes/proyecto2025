@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
+import { Producto } from 'src/app/models/producto';
 
 @Component({
   selector: 'app-carrusel',
@@ -6,19 +8,35 @@ import { Component } from '@angular/core';
   styleUrls: ['./carrusel.component.css']
 })
 export class CarruselComponent {
-  imagenes = [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3G_DpMn1vIUWo6b5atlFXL9X_iixrCpvEzw&s',
-    'https://via.placeholder.com/600x300?text=Imagen+2',
-    'https://via.placeholder.com/600x300?text=Imagen+3',
-  ];
-  indiceActual = 0;
+  // String que modificará el valor de @Input en el componente hijo
+  product: string = '';
 
-  siguiente() {
-    this.indiceActual = (this.indiceActual + 1) % this.imagenes.length;
-  }
+  // Colección de productos añadidos a la lista
+  productosCarrusel: Producto[] = [];
 
-  anterior() {
-    this.indiceActual = (this.indiceActual - 1 + this.imagenes.length) % this.imagenes.length;
+  
+  juguete: boolean = false;
+  general: boolean = true;
+
+  productoAnadido(producto: Producto) {
+    // Modificador del valor de 'product'
+    this.product = `${producto.nombre} : $${producto.precio}`;
+
+    try {
+      // Agregamos la información a la colección de carrusel
+      this.productosCarrusel.push(producto);
+
+      Swal.fire({
+        title: 'Bien',
+        text: 'Ha añadido este producto con éxito',
+        icon: 'info'
+      });
+    } catch (error) {
+      Swal.fire({
+        title: '¡Oh no!',
+        text: 'Ha ocurrido un error\n' + error,
+        icon: 'error'
+      });
+    }
   }
 }
-

@@ -1,4 +1,4 @@
-.carrusel {
+/* .carrusel {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,5 +7,19 @@
   .carrusel img {
     max-width: 100%;
     height: auto;
-  }
-  
+  } */
+
+.carousel-inner {
+  justify-content: center;
+  margin: 0;
+}
+
+.carousel-item {
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen-carrusel {
+  width: 100%;
+  justify-content: center;
+}
