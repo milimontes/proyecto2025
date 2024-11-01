@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 // IMPORTAMOS INTERFAZ
-import { Animal } from 'src/app/models/animal';
+import { Productos} from 'src/app/models/tarjetas';
 
 @Component({
   selector: 'app-card',
@@ -9,30 +9,28 @@ import { Animal } from 'src/app/models/animal';
 })
 export class CardComponent {
   // PROPIEDAD PÚBLICA (TIPO ARRAY)
-  public info: Animal[];
+  public info: Productos[];
+  
 
   constructor(){
     this.info = [
       {
         id: "",
-        nombre: "outfits",
-        edad: 0,
-        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxJ532BCOj83JBRPNebSmVXw---v6tmq9sycCqN1CTtSZvW2rcXc_wfsU95DzIAAuSqSI&usqp=CAU",
-        alt: "Un outfit de mujer"
+        imagen: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/5c01b6060b9647e8811daf630117bcaf_9366/Zapatilla_Campus_00s_Gris_HQ6507_01_standard.jpg",
+        nombre: "𝒛𝒂𝒑𝒂𝒕𝒊𝒍𝒍𝒂𝒔",
+        alt: "..."
       },
       {
         id: "",
-        nombre: "outfits",
-        edad: 7,
-        imagen: "https://i.pinimg.com/236x/e6/69/62/e66962f988920bfa4d0cad1afeabfb75.jpg",
-        alt: "outfit de hombre"
+        nombre: "𝒄𝒂𝒓𝒕𝒆𝒓𝒂",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn0eTdLOegoOtpL3tBV9s5HCLDmK0WlfJUmA5Ea-juGTdWdFksdMQNCsrtsO7aIGHq0TQ&usqp=CAU",
+        alt: "..."
       },
       {
         id: "",
-        nombre: "cartera",
-        edad: 10,
-        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQebeNGTMzZfmJyMM1Io5kZDD_3ESCS7oVgiAT9SAU5FygnkVkSHCo9bLUEjWn81kCEQw&usqp=CAU",
-        alt: "accesorio cartera"
+        nombre: "𝒈𝒐𝒓𝒓𝒂",
+        imagen: "https://newera.com.ar/media/catalog/product/cache/06cfaa02c67cf3a5c3c05d775284c631/g/o/gorra-new-era-new-york-yankees-59fifty-citrus-pop-60288266_7_.jpg",
+        alt: "..."
       }
     ]
   }

@@ -14,41 +14,7 @@ import Swal from 'sweetalert2';
 export class InicioSesionComponent {
   hide = true;
 
-  /* ####################################### LOCAL
-  // Definimos la propiedad local para que guarde la colección
-
-  // COLECCIÓN LOCAL DE usuarioIngresado CON INFORMACIÓN
-  public coleccionusuarioIngresadoLocal: Usuario[];
-  
-  constructor(){
-    this.coleccionusuarioIngresadoLocal = [
-      {
-        uid: '',
-        nombre: 'Leandro',
-        apellido: 'Soto',
-        email: 'leandrosoto@gmail.com',
-        rol: 'admin',
-        password: '123456'
-      },
-      {
-        uid: '',
-        nombre: 'Pepe',
-        apellido: 'Novita',
-        email: 'pepenovita@gmail.com',
-        rol: 'vis',
-        password: 'abc123'
-      },
-      {
-        uid: '',
-        nombre: 'Tomas',
-        apellido: 'Loyola',
-        email: 'tomasloyola@gmail.com',
-        rol: 'admin',
-        password: 'abcdef'
-      }
-    ]
-  }*/
-  // ####################################### FIN LOCAL
+ 
 
   constructor(
     public servicioAuth: AuthService,
