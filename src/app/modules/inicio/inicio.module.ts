@@ -12,11 +12,13 @@ import { CardComponent } from './components/card/card.component';
 // COMPONENTES QUE IMPORTAMOS DESDE MATERIAL
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { CarruselComponent } from './components/carrusel/carrusel.component';
 
 @NgModule({
   declarations: [
     InicioComponent,
-    CardComponent
+    CardComponent,
+    CarruselComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { MatCardModule } from '@angular/material/card';
   ],
   exports:[
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    InicioComponent
   ]
 })
 export class InicioModule { }
