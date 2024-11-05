@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccesoriosComponent } from './accesorios/accesorios.component';
+
 
 // COMPONENTES GLOBALES
 import { SharedModule } from './modules/shared/shared.module';
@@ -13,7 +15,8 @@ import { environment } from 'src/ennvironments/environment'; //Vincula la BD con
 import { AngularFireModule } from '@angular/fire/compat'; // Es para el Cloud Firestore
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'; // Es para la Autentificación
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { CarruselComponent } from './modules/inicio/components/carrusel/carrusel.component'; // Es para la BD de archivos e imágenes
+
+
 
 /** 
  * npm install firebase --force
@@ -23,7 +26,7 @@ import { CarruselComponent } from './modules/inicio/components/carrusel/carrusel
 @NgModule({
   declarations: [
     AppComponent,
-    CarruselComponent
+    AccesoriosComponent,
   ],
   imports: [
     BrowserModule,

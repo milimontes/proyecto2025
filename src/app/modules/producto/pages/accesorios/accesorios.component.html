@@ -1,0 +1,19 @@
+<!-- accesorios.component.html -->
+<div class="accesorio-container">
+    <!-- Contenedor principal del componente que tiene el accesorio -->
+    <div class="accesorio-card">
+      <!-- Título del accesorio -->
+      <h3>{{ title }}</h3>
+      <!-- Descripción corta del accesorio -->
+      <p>{{ description }}</p>
+  
+      <!-- Botón que alterna la visibilidad de la descripción detallada -->
+      <button (click)="toggleDescription()">Mostrar/Ocultar Descripción</button>
+  
+      <!-- Sección que muestra la descripción detallada solo si 'showDescription' es verdadero -->
+      <div *ngIf="showDescription">
+        <p>{{ detailedDescription }}</p>
+      </div>
+    </div>
+  </div>
+  
