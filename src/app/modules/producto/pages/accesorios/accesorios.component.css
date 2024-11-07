@@ -1,46 +1,9 @@
-/* accesorios.component.css */
+container{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
 
-/* Estilo del contenedor principal */
-.accesorio-container {
-    display: flex; /* Usamos flexbox para alinear elementos */
-    justify-content: center; /* Centra el componente horizontalmente */
-    margin-top: 20px; /* Espaciado superior */
-  }
-  
-  /* Estilo de la tarjeta que contiene el accesorio */
-  .accesorio-card {
-    border: 1px solid #ccc; /* Borde gris claro */
-    padding: 20px; /* Espaciado interno */
-    background-color: #f9f9f9; /* Fondo gris claro */
-    width: 250px; /* Ancho fijo */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  }
-  
-  /* Estilo del botón */
-  button {
-    margin-top: 10px; /* Espaciado superior */
-    padding: 8px 15px; /* Espaciado interno del botón */
-    background-color: #4CAF50; /* Fondo verde */
-    color: white; /* Texto blanco */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor cuando pasa sobre el botón */
-  }
-  
-  /* Estilo del botón cuando el mouse está encima */
-  button:hover {
-    background-color: #45a049; /* Fondo verde más oscuro */
-  }
-  
-  /* Estilo de los títulos h3 */
-  h3 {
-    font-size: 18px; /* Tamaño de fuente */
-    color: #333; /* Color oscuro */
-  }
-  
-  /* Estilo de los párrafos */
-  p {
-    color: #555; /* Color gris medio */
-  }
-  
+h1{
+    padding: 1rem;
+}

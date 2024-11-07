@@ -1,51 +1,52 @@
-.container{
+/* Estilos Generales */
+.container {
     display: flex;
+    flex-wrap: wrap;
     padding: 10px;
     justify-content: center;
+    gap: 15px; /* Espacio entre elementos */
 }
 
-
-
-h1{
+h1 {
     text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
-.contenido{
-    width: 350px;
-    display: inline-block;
+.contenido {
+    width: 100%;
+    max-width: 350px;
     padding: 15px;
     border-radius: 8px;
     margin: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #fff; /* Fondo blanco para las tarjetas */
+    transition: transform 0.2s ease; /* Animación en hover */
 }
 
-p{
+.contenido:hover {
+    transform: translateY(-5px); /* Efecto de levitación */
+}
+
+p {
     padding: 5px;
-}
-@media (min-width:300px) and (max-width:700px){
-
+    font-size: 1rem;
 }
 
-@media (min-width:700px){
-    .container{
-        display: flex;
-        padding: 10px;
-        justify-content: center;
+/* Media Queries para Responsividad */
+@media (max-width: 700px) {
+    .contenido {
+        width: 100%; /* Anchura completa en pantallas pequeñas */
+        margin: 10px 0;
     }
     
-    h1{
-        text-align: center;
+    h1 {
+        font-size: 1.5rem;
     }
-    
-    .contenido{
-        width: 350px;
-        display: inline-block;
-        padding: 15px;
-        border-radius: 8px;
-        margin: 10px;
+}
+
+@media (min-width: 700px) {
+    .contenido {
+        width: 350px; /* Mantiene el ancho fijo en pantallas más grandes */
     }
-    
-    p{
-        padding: 5px;
-    }
-    
 }

@@ -1,0 +1,119 @@
+/* Estilos Generales */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F9F9F9; /* Fondo blanco hueso */
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+nav {
+  background-color: #333333; /* Gris oscuro */
+  color: #FFFFFF;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: #FFFFFF;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 1.1em;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Sección de Indumentaria */
+.indumentaria-section {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Contenedor de tarjetas */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Tarjetas */
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #D3D3D3; /* Gris claro para los bordes */
+  border-radius: 8px;
+  width: 250px; /* Ancho de la tarjeta */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
+  width: 100%;
+  height: 250px; /* Altura de la imagen */
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card h3 {
+  font-size: 1.2em;
+  margin: 0;
+  color: #333333; /* Gris oscuro para los títulos */
+}
+
+.price {
+  color: #888;
+  font-size: 1.1em;
+  margin: 5px 0;
+}
+
+/* Botón de Like */
+.like-button {
+  background-color: #FF9A8B; /* Coral más claro */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.like-button:hover {
+  background-color: #FF7F6F; /* Coral ligeramente más oscuro */
+}
+
+/* Botones destacados */
+button, .btn {
+  background-color: #70BCCF; /* Azul turquesa más claro */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: #5DA8B8; /* Azul turquesa más oscuro */
+}
+
+/* Texto de enlaces */
+a {
+  color: #70BCCF; /* Azul turquesa más claro para enlaces */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

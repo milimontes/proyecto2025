@@ -19,7 +19,7 @@ export class CarruselComponent {
 
   // Arreglo de imágenes para el carrusel
   images: string[] = [
-    'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c9517fcf1709414fb57b3139c4dd3c90_9366/Pantalon_Deportivo_Essentials_Felpa_Francesa_Negro_IW0952_21_model.jpg',
+    '',
     'assets/carrusel/imagen2.jpg',
     'assets/carrusel/imagen3.jpg'
   ];

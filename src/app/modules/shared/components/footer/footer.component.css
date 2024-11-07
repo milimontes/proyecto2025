@@ -1,0 +1,74 @@
+/* Footer CSS */
+
+/* Estilo básico del footer: color de fondo, color de texto y alineación centrada */
+.footer {
+    background-color: #0D1B2A ;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Contenedor del footer para organizar las secciones en fila */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que el contenido se ajuste en múltiples filas en pantallas pequeñas */
+    justify-content: space-around; /* Distribuye uniformemente el espacio entre las secciones */
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenedor en la página */
+}
+
+/* Estilo general para cada sección del footer */
+.footer-section {
+    flex: 1; /* Permite que cada sección ocupe el mismo ancho */
+    min-width: 200px; /* Asegura un tamaño mínimo en pantallas pequeñas */
+    margin: 20px;
+}
+
+/* Títulos de cada sección del footer */
+.footer-section h3 {
+    color: #D4AF37; /* Color de texto para resaltar */
+    margin-bottom: 10px;
+}
+
+/* Estilo para el texto y enlaces dentro de cada sección */
+.footer-section p,
+.footer-section ul,
+.footer-section a {
+    color: #ccc; /* Color gris claro para los textos y enlaces */
+    font-size: 0.9em; /* Tamaño de fuente ligeramente más pequeño */
+}
+
+/* Elimina viñetas en la lista de enlaces */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilo para enlaces individuales dentro de la lista */
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+/* Cambio de color al pasar el mouse sobre los enlaces */
+.footer-section ul li a:hover {
+    color: #f4d03f; /* Color de resaltado al pasar el cursor */
+}
+
+/* Alineación de los enlaces dentro de cada sección */
+.footer-section a {
+    display: inline-block;
+    margin: 5px 0;
+}
+
+/* Ajuste específico para los enlaces de redes sociales */
+.footer-section .social a {
+    display: block;
+}
+
+/* Parte inferior del footer: línea divisoria y texto */
+.footer-bottom {
+    border-top: 1px solid #666; /* Línea divisoria superior */
+    padding-top: 10px;
+    font-size: 0.8em; /* Tamaño de fuente más pequeño */
+}

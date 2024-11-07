@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './modules/inicio/pages/inicio/inicio.component';
+import { ContactoComponent } from './contacto/contacto.component';
+
 
 // Son las encargadas de tener todas las rutas de la página
 const routes: Routes = [
@@ -8,6 +10,8 @@ const routes: Routes = [
   {
     path:"",component:InicioComponent
   },
+  { path: 'contacto', component: ContactoComponent },
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' }, // Ruta predeterminada, cambia según tu proyecto
   // Carga perezosa -> 1 módulo
   // loadChildren: indica una ruta hija
   // ()=>import: ruta de dónde viene el módulo

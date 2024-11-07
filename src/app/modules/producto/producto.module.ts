@@ -8,6 +8,9 @@ import { ProductoRoutingModule } from './producto-routing.module';
 // VISTAS
 import { ProductoComponent } from './pages/producto/producto.component';
 import { IndumentariaComponent } from './pages/indumentaria/indumentaria.component';
+import { AccesoriosComponent } from './pages/accesorios/accesorios.component';
+import { ZapatillasComponent } from './pages/zapatillas/zapatillas.component';
+
 
 // COMPONENTES LOCALES
 import { CardComponent } from './components/card/card.component';
@@ -19,7 +22,10 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
     ProductoComponent,
     IndumentariaComponent,
     CardComponent,
-    CarruselComponent
+    CarruselComponent,
+    AccesoriosComponent,
+    ZapatillasComponent,
+
   ],
   imports: [
     CommonModule,
@@ -29,6 +35,9 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
   exports: [
     ProductoComponent,
     IndumentariaComponent,
+    AccesoriosComponent,
+    ZapatillasComponent,
+
     CardComponent,
     MatTabsModule
   ]
