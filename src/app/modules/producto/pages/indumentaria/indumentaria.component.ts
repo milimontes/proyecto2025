@@ -27,8 +27,10 @@ export class IndumentariaComponent {
     { id: 5, nombre: 'BODY ENTALLADO POLIAMIDA', precio: 42.000, imagenUrl: 'https://static.zara.net/assets/public/5b4a/9725/3406417eb5cc/ba10d7c1d529/03641349800-e1/03641349800-e1.jpg?ts=1724084585104&w=563', liked: false },
     { id: 6, nombre: 'CAMISETA PARCHE FOTOGRÁFIC', precio: 23.889, imagenUrl: 'https://static.zara.net/assets/public/8886/0c13/02f3495d8d33/ea3d6f7355b1/03992354933-e1/03992354933-e1.jpg?ts=1723533237629&w=563', liked: false },
     { id: 7, nombre: 'BUZO ESTAMPADO', precio: 70.000, imagenUrl: 'https://static.zara.net/assets/public/7cb8/ace0/00b141ecb925/cef510f49d02/05857446500-e1/05857446500-e1.jpg?ts=1724757065505&w=563', liked: false },
-    { id: 8, nombre: 'BERMUDA', precio: 43.000, imagenUrl: 'https://static.zara.net/assets/public/ef51/24ac/41cb411196fc/e070daf0d689/08062408406-e1/08062408406-e1.jpg?ts=1719386691191&w=563', liked: false },
-
+    { id: 8, nombre: 'BERMUDA', precio: 43.000, imagenUrl: 'https://static.zara.net/assets/public/eeec/43a6/c8f6443491a4/ada1078fdf0a/01538499802-e1/01538499802-e1.jpg?ts=1722423853478&w=563', liked: false },
+    { id: 9, nombre: 'CHOMBA', precio: 35.000, imagenUrl: 'https://static.zara.net/assets/public/5155/5ebc/d86d49988485/8b4b828d594a/01887460306-e1/01887460306-e1.jpg?ts=1725544206266&w=563', liked: false },
+    { id: 10,nombre: 'BERMUDA JOGGER', precio: 40.000, imagenUrl: 'https://static.zara.net/assets/public/a4ad/1585/365f48a3b771/1f486241fb0a/03854410800-e1/03854410800-e1.jpg?ts=1710950212297&w=563', liked: false },
+   
 
 
 
