@@ -1,23 +1,41 @@
 <div class="container">
     <div class="row">
+        <!-- Título principal de la página de inicio de sesión -->
         <h1>Inicia Sesión</h1>
 
+        <!-- Ícono de usuario, utilizado como un elemento visual para representar el inicio de sesión -->
         <i class="material-icons" style="font-size: 200px;">person</i>
         
+        <!-- Campo de formulario para ingresar el correo electrónico del usuario -->
         <mat-form-field appearance="fill">
+            <!-- Etiqueta del campo de correo electrónico -->
             <mat-label>Ingrese su email:</mat-label>
+            <!-- Campo de entrada para el correo electrónico, enlazado con [(ngModel)] para enlazar los datos con la variable 'usuarioIngresado.email' -->
             <input [(ngModel)]="usuarioIngresado.email" matInput placeholder="Ej: juancito67@gmail.com" required>
         </mat-form-field>
 
+        <!-- Campo de formulario para ingresar la contraseña del usuario -->
         <mat-form-field>
+            <!-- Etiqueta del campo de contraseña -->
             <mat-label>Ingrese su contraseña:</mat-label>
+            <!-- Campo de entrada para la contraseña, con capacidad para ocultar o mostrar el texto -->
             <input [(ngModel)]="usuarioIngresado.password" matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            
+            <!-- Botón de icono que permite alternar la visibilidad de la contraseña -->
+            <button mat-icon-button matSuffix (click)="hide = !hide" 
+                    [attr.aria-label]="'Ocultar contraseña'" 
+                    [attr.aria-pressed]="hide">
+                <!-- Icono de visibilidad que cambia entre 'visibility_off' y 'visibility' en función de la variable 'hide' -->
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
+            
+            <!-- Pista de ayuda que muestra el mínimo de caracteres y el conteo actual de caracteres ingresados -->
             <mat-hint align="start">Mínimo:6/{{input.value.length}}</mat-hint>
         </mat-form-field>
 
-        <button class="boton" mat-raised-button color="primary" (click)="iniciarSesion()">Iniciar Sesión</button>
+        <!-- Botón para enviar el formulario e iniciar sesión, con color personalizado -->
+        <button class="boton" mat-raised-button color="primary" 
+                style="background-color: #A4D5DF;" 
+                (click)="iniciarSesion()">Iniciar Sesión</button>
     </div>
 </div>

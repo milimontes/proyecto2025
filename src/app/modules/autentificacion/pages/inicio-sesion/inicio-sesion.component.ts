@@ -12,18 +12,17 @@ import Swal from 'sweetalert2';
   styleUrls: ['./inicio-sesion.component.css']
 })
 export class InicioSesionComponent {
+  // Variable para controlar la visibilidad de la contraseña en el campo de entrada
   hide = true;
 
- 
-
+  // Constructor que inyecta los servicios de autenticación, Firestore y navegación de rutas
   constructor(
     public servicioAuth: AuthService,
     public servicioFirestore: FirestoreService,
     public servicioRutas: Router
   ) { }
 
-  // ####################################### INGRESADO
-  // Importamos la interfaz de usuario e inicializamos vacío
+  // Objeto usuarioIngresado que representa al usuario que intenta iniciar sesión.
   usuarioIngresado: Usuario = {
     uid: '',
     nombre: '',
@@ -33,117 +32,84 @@ export class InicioSesionComponent {
     password: ''
   }
 
-  // Función para el inicio de sesión
+  // Función para iniciar sesión del usuario
   async iniciarSesion() {
-    // ############################################# LOCAL
-    // Las credenciales reciben la información que se envía desde la web
-    /*
-    const credenciales = {
-      uid: this.usuarioIngresado.uid,
-      nombre: this.usuarioIngresado.nombre,
-      apellido: this.usuarioIngresado.apellido,
-      email: this.usuarioIngresado.email,
-      rol: this.usuarioIngresado.rol,
-      password: this.usuarioIngresado.password
-    }
-
-    // Repetitiva para recorrer la colección local
-    for(let i = 0; i < this.coleccionusuarioIngresadoLocal.length; i++){
-      // Constante que guarde la información de la posición actual de los objetos
-      const usuarioLocal = this.coleccionusuarioIngresadoLocal[i];
-
-      
-      Comparando uno por uno los atributos del objeto local con el que ingresa el 
-      usuario 
-      if(usuarioLocal.nombre === credenciales.nombre && 
-        usuarioLocal.apellido === credenciales.apellido && 
-        usuarioLocal.email === credenciales.email && 
-        usuarioLocal.rol === credenciales.rol && 
-        usuarioLocal.password === credenciales.password
-      ){
-        // Notificamos al usuario su correcto ingreso
-        alert("Iniciaste sesión correctamente :)");
-        // Paramos la función
-        break;
-      } else {
-        alert("No se pudo iniciar sesión :(");
-        break;
-      }
-    }*/
-
-    // ############################################# FIN LOCAL
-
+    // Objeto credenciales que recoge los datos ingresados en el formulario (email y contraseña)
     const credenciales = {
       email: this.usuarioIngresado.email,
       password: this.usuarioIngresado.password
     }
 
-    try{
-      // Obtenemos el usuario desde la BD -> Cloud Firestore
+    try {
+      // Busca el usuario en la base de datos de Firestore usando el correo electrónico ingresado
       const usuarioBD = await this.servicioAuth.obtenerUsuario(credenciales.email);
 
-      // ! -> si es diferente
-      // .empy -> método de Firebase para marcar si algo es vacío
-      if(!usuarioBD || usuarioBD.empty){
+      // Verifica si el usuario existe en la base de datos
+      if (!usuarioBD || usuarioBD.empty) {
+        // Muestra una alerta de error si el correo electrónico no está registrado
         Swal.fire({
           text: "Correo electrónico no registrado",
-          icon: "error"
-        })
-        this.limpiarInputs();
-        return;
+          icon: "error",
+          confirmButtonColor: '#A4D5DF' // Color personalizado para el botón "OK"
+        });
+        this.limpiarInputs(); // Limpia los campos del formulario
+        return; // Sale de la función si el usuario no está registrado
       }
       
-      /* Primer documento (registro) en la colección de usuarios que se obtiene desde la 
-        consulta.
-      */
+      // Toma el primer documento de la colección de usuarios obtenida
       const usuarioDoc = usuarioBD.docs[0];
 
-      /**
-       * Extrae los datos del documento en forma de un objeto y se específica como de tipo 
-       * "Usuario" -> haciendo referencia a nuestra interfaz de Usuario.
-       */
+      // Convierte los datos del documento en un objeto de tipo Usuario
       const usuarioData = usuarioDoc.data() as Usuario;
 
-      // Hash de la contraseña ingresada por el usuario
+      // Cifra la contraseña ingresada usando SHA-256 para compararla con la de la base de datos
       const hashedPassword = CryptoJS.SHA256(credenciales.password).toString();
 
-      if(hashedPassword !== usuarioData.password){
+      // Compara la contraseña ingresada cifrada con la contraseña almacenada en la base de datos
+      if (hashedPassword !== usuarioData.password) {
+        // Muestra una alerta si la contraseña es incorrecta
         Swal.fire({
           text: "Contraseña incorrecta",
-          icon: "error"
-        })
-
-        this.usuarioIngresado.password = '';
-        return;
-      }
-
-      const res = await this.servicioAuth.iniciarSesion(credenciales.email, credenciales.password)
-      .then(res => {
-        Swal.fire({
-          text: "¡Se ha logueado con éxito! :D",
-          icon: "success"
+          icon: "error",
+          confirmButtonColor: '#A4D5DF' // Color personalizado para el botón "OK"
         });
 
-        this.servicioRutas.navigate(['/inicio']);
-      })
-      .catch(err => {
-        Swal.fire({
-          text: "Hubo un problema al iniciar sesión :(" + err,
-          icon: "error"
-        })
+        this.usuarioIngresado.password = ''; // Limpia el campo de contraseña
+        return; // Sale de la función si la contraseña es incorrecta
+      }
 
-        this.limpiarInputs();
-      })
-    }catch(error){
+      // Inicia la sesión del usuario en el sistema
+      const res = await this.servicioAuth.iniciarSesion(credenciales.email, credenciales.password)
+        .then(res => {
+          // Muestra una alerta de éxito si el inicio de sesión es exitoso
+          Swal.fire({
+            text: "¡Se ha logueado con éxito! :D",
+            icon: "success",
+            confirmButtonColor: '#A4D5DF' // Color personalizado para el botón "OK"
+          });
+
+          // Navega a la página de inicio
+          this.servicioRutas.navigate(['/inicio']);
+        })
+        .catch(err => {
+          // Muestra una alerta de error si ocurre un problema al iniciar sesión
+          Swal.fire({
+            text: "Hubo un problema al iniciar sesión: " + err,
+            icon: "error",
+            confirmButtonColor: '#A4D5DF' // Color personalizado para el botón "OK"
+          });
+
+          this.limpiarInputs(); // Limpia los campos del formulario
+        });
+    } catch (error) {
+      // En caso de error, limpia los campos del formulario
       this.limpiarInputs();
     }
   }
 
-  // Función para vaciar el formulario
+  // Función para limpiar los campos de entrada de email y contraseña
   limpiarInputs() {
-    const inputs = {
-      email: this.usuarioIngresado.email = '',
-      password: this.usuarioIngresado.password = ''
-    }
+    this.usuarioIngresado.email = ''; // Limpia el campo de email
+    this.usuarioIngresado.password = ''; // Limpia el campo de contraseña
   }
 }

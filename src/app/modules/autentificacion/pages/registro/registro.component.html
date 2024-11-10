@@ -1,48 +1,66 @@
 <div class="container">
     <div class="row">
-        <h1>Registrate</h1>
+        <!-- Título principal de la página de registro -->
+        <h1>Regístrate</h1>
 
+        <!-- Ícono de usuario grande para indicar el registro -->
         <i class="material-icons" style="font-size: 200px;">person</i>
 
-        <!-- Nombre de usuario -->
+        <!-- Campo de formulario para el nombre del usuario -->
         <mat-form-field appearance="fill">
+            <!-- Etiqueta del campo de nombre de usuario -->
             <mat-label>Ingrese nombre de usuario:</mat-label>
-            <!-- ngModel = conecta de forma bidireccional como un formulario -->
+            <!-- Campo de entrada para el nombre, enlazado a 'usuarios.nombre' -->
             <input [(ngModel)]="usuarios.nombre" matInput placeholder="Ej: Juan" required>
         </mat-form-field>
 
-        <!-- Apellido de usuario-->
+        <!-- Campo de formulario para el apellido del usuario -->
         <mat-form-field appearance="fill">
+            <!-- Etiqueta del campo de apellido del usuario -->
             <mat-label>Ingrese su apellido:</mat-label>
+            <!-- Campo de entrada para el apellido, enlazado a 'usuarios.apellido' -->
             <input [(ngModel)]="usuarios.apellido" matInput placeholder="Ej: hernandez" required>
         </mat-form-field>
 
-        <!-- Email de usuario -->
+        <!-- Campo de formulario para el email del usuario -->
         <mat-form-field appearance="fill">
+            <!-- Etiqueta del campo de correo electrónico -->
             <mat-label>Ingrese su email:</mat-label>
+            <!-- Campo de entrada para el email, enlazado a 'usuarios.email' -->
             <input [(ngModel)]="usuarios.email" matInput placeholder="Ej: juanhernandez67@gmail.com" required>
         </mat-form-field>
 
-        <!-- Rol de usuario -->
+        <!-- Campo de selección para el rol del usuario -->
         <mat-form-field>
+            <!-- Etiqueta del campo de selección de rol -->
             <mat-label>Seleccione un rol:</mat-label>
+            <!-- Menú desplegable para seleccionar el rol de usuario -->
             <mat-select [(ngModel)]="usuarios.rol" required>
+              <!-- Opción de rol: Administrador -->
               <mat-option value="admin">Administrador</mat-option>
+              <!-- Opción de rol: Visitante -->
               <mat-option value="vis">Visitante</mat-option>
             </mat-select>
         </mat-form-field>
 
-        <!-- Contraseña de usuario -->
+        <!-- Campo de formulario para la contraseña del usuario -->
         <mat-form-field>
+            <!-- Etiqueta del campo de contraseña -->
             <mat-label>Ingrese su contraseña</mat-label>
+            <!-- Campo de entrada para la contraseña con opción de mostrar u ocultar -->
             <input [(ngModel)]="usuarios.password" matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
+            
+            <!-- Botón para alternar visibilidad de la contraseña -->
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <!-- Icono de visibilidad que cambia entre ocultar y mostrar -->
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
+            
+            <!-- Indicador de ayuda que muestra el mínimo de caracteres requeridos -->
             <mat-hint text-align="start">Mínimo:6/{{input.value.length}}</mat-hint>
         </mat-form-field>
 
-        <!-- Botón para enviar la información -->
-        <button mat-raised-button color="primary" class="boton" (click)="registrar()">Registrar</button>
+        <!-- Botón para enviar la información del formulario de registro -->
+        <button mat-raised-button color="primary" class="boton" style="background-color: #A4D5DF;" (click)="registrar()">Registrar</button>
     </div>
 </div>
