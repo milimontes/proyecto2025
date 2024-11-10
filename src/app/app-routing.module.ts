@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './modules/inicio/pages/inicio/inicio.component';
-import { ContactoComponent } from './contacto/contacto.component';
+import { ContactoComponent } from './modules/contacto/contacto.component';
 
 
 // Son las encargadas de tener todas las rutas de la página

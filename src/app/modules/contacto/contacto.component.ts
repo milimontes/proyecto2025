@@ -13,10 +13,14 @@ export class ContactoComponent {
   };
 
   // Método que maneja el envío del formulario
-  onSubmit() {
+  onSubmit(contactForm: any) {
     if (this.contact.name && this.contact.email && this.contact.message) {
       console.log('Formulario enviado', this.contact);
-      // Aquí podrías agregar lógica para enviar los datos a un servidor o API
+      // Lógica para enviar los datos a un servidor o API
+
+      // Limpia el formulario después de enviarlo
+      contactForm.reset();
+      this.contact = { name: '', email: '', message: '' };
     } else {
       console.log('Por favor completa todos los campos.');
     }

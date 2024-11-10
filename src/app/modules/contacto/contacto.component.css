@@ -1,0 +1,173 @@
+.contact-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+ le pones estos colores /* Estilos Generales */
+body {
+font-family: Arial, sans-serif;
+background-color: #F2F2F2; /* Fondo blanco más claro */
+margin: 0;
+padding: 0;
+}
+
+/* Navbar */
+nav {
+background-color: #4D4D4D; /* Gris más claro */
+color: #FFFFFF;
+padding: 15px;
+text-align: center;
+}
+
+nav a {
+color: #FFFFFF;
+text-decoration: none;
+margin: 0 25px;
+font-size: 1.1em;
+}
+
+nav a:hover {
+text-decoration: underline;
+}
+
+/* Sección de Indumentaria */
+.indumentaria-section {
+text-align: center;
+padding: 30px;
+}
+
+/* Contenedor de tarjetas */
+.card-container {
+display: flex;
+flex-wrap: wrap;
+gap: 25px; /* Más espacio entre tarjetas */
+justify-content: center;
+}
+
+/* Tarjetas */
+.card {
+background-color: #FFFFFF;
+border: 1px solid #E0E0E0; /* Bordes más claros */
+border-radius: 8px;
+width: 260px;
+overflow: hidden;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+transition: transform 0.3s ease;
+}
+
+.card:hover {
+transform: translateY(-5px);
+}
+
+.card-image {
+width: 100%;
+height: 240px;
+object-fit: cover;
+}
+
+.card-content {
+padding: 20px;
+}
+
+.card h3 {
+font-size: 1.2em;
+margin: 0;
+color: #4D4D4D; /* Gris oscuro más claro */
+}
+
+.price {
+color: #A0A0A0;
+font-size: 1.1em;
+margin: 8px 0;
+}
+
+/* Botón de Like */
+.like-button {
+background-color: #FFB7A6; /* Coral mucho más claro */
+color: white;
+border: none;
+padding: 10px 20px;
+font-size: 1em;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+margin: 5px; /* Espaciado adicional */
+}
+
+.like-button:hover {
+background-color: #FF9788; /* Coral un poco más oscuro */
+}
+
+/* Botones destacados */
+button, .btn {
+background-color: #A4D5DF; /* Azul turquesa claro */
+color: white;
+border: none;
+padding: 12px 25px; /* Más espacio en botones */
+border-radius: 5px;
+cursor: pointer;
+font-size: 1.1em;
+transition: background-color 0.3s ease;
+margin: 5px; /* Espaciado adicional */
+}
+
+button:hover, .btn:hover {
+background-color: #8FC3CC; /* Azul turquesa más oscuro */
+}
+
+/* Texto de enlaces */
+a {
+color: #A4D5DF; /* Azul turquesa claro para enlaces */
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}

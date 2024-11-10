@@ -1,25 +1,26 @@
 <div class="container">
-    <div class="row">
-        
-
-        <div class="col">
-            <div *ngFor="let i of info" class="contenido">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                      <mat-card-title>{{i.nombre}}</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src="{{i.imagen}}" alt="{{i.alt}}">
-                    <mat-card-content>
-                      <p>
-                     
-                      </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                      <button mat-button>𝘓𝘐𝘒𝘌</button>
-                      <button mat-button>𝘚𝘏𝘈𝘙𝘌</button>
-                    </mat-card-actions>
-                  </mat-card>                
-            </div>
-        </div>
+  <div class="row">
+    <div class="col">
+      <div *ngFor="let i of info" class="contenido">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>{{i.nombre}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image [src]="i.imagen" [alt]="i.alt">
+          <mat-card-content>
+            <p>
+              <!-- Aquí puedes agregar contenido adicional si es necesario -->
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="likeProducto(i)">
+              <i class="fa" [ngClass]="i.liked ? 'fa-heart' : 'fa-heart-o'"></i> 
+              {{i.liked ? 'Deshacer Like' : 'Like'}}
+            </button>
+            <button mat-button (click)="shareProducto(i)">𝘚𝘏𝘈𝘙𝘌</button>
+          </mat-card-actions>
+        </mat-card>                
+      </div>
     </div>
+  </div>
 </div>

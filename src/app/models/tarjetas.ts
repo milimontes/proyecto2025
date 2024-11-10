@@ -3,4 +3,5 @@ export interface Productos {
     imagen: string;
     nombre: string;
     alt: string;
+    liked: boolean; // Añadimos la propiedad liked
 }
