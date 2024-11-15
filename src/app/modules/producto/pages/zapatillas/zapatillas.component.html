@@ -1,31 +1,27 @@
 <div class="zapatillas-section">
   <!-- Título de la sección -->
   <h2>Zapatillas</h2>
-
   <!-- Contenedor de las tarjetas de productos -->
   <div class="card-container">
     <!-- Iteración sobre cada producto en la lista "productos" -->
     <div *ngFor="let producto of productos" class="card">
-
+      
       <!-- Imagen del producto -->
       <!-- Se muestra la imagen desde la URL de "producto.imagenUrl" -->
       <!-- Al hacer clic en la imagen, llama a "verImagenGrande" para abrir la imagen en un modal -->
       <img [src]="producto.imagenUrl" alt="{{producto.nombre}}" class="card-image" (click)="verImagenGrande(producto.imagenUrl)" />
-
+      
       <!-- Contenedor del contenido de la tarjeta -->
       <div class="card-content">
         <!-- Nombre del producto -->
         <h3>{{producto.nombre}}</h3>
-
         <!-- Precio del producto, formateado como número sin decimales -->
         <p class="price">${{producto.precio | number:'1.0-0'}}</p>
-
         <!-- Botón de "Me gusta" -->
         <!-- Al hacer clic, llama a "toggleLike" para cambiar el estado de "liked" -->
         <button class="like-button" (click)="toggleLike(producto)">
           {{producto.liked ? '♥ Liked' : '♡ Like'}}
         </button>
-
         <!-- Botón de agregar al carrito -->
         <!-- Llama a "agregarAlCarrito" al hacer clic, para añadir el producto al carrito -->
         <button class="add-to-cart-button" (click)="agregarAlCarrito(producto)">
@@ -34,42 +30,34 @@
       </div>
     </div>
   </div>
-
   <!-- Modal para mostrar la imagen en grande -->
   <!-- Solo se muestra si "imagenGrandeUrl" no es nulo -->
   <div *ngIf="imagenGrandeUrl" class="modal" (click)="cerrarModal()">
     <!-- Imagen en grande, usando la URL de "imagenGrandeUrl" -->
     <img [src]="imagenGrandeUrl" alt="Producto en grande" class="modal-image" />
   </div>
-
   <!-- Sección del carrito de compras -->
   <!-- Solo se muestra si hay productos en el carrito -->
   <div *ngIf="carrito.length > 0" class="cart-section">
     <!-- Título del carrito -->
     <h2>Tu Carrito</h2>
-
     <!-- Iteración sobre cada elemento del carrito -->
     <div *ngFor="let item of carrito" class="cart-item">
       <!-- Imagen del producto en el carrito -->
       <img [src]="item.producto.imagenUrl" alt="{{item.producto.nombre}}" class="cart-item-image" />
-
       <!-- Contenedor de detalles del producto en el carrito -->
       <div>
         <!-- Nombre del producto en el carrito -->
         <h4>{{item.producto.nombre}}</h4>
-
         <!-- Cantidad del producto en el carrito -->
         <p>Cantidad: {{item.cantidad}}</p>
-
         <!-- Subtotal por producto en el carrito -->
         <!-- Calcula el subtotal multiplicando el precio por la cantidad -->
         <p>${{item.producto.precio | number:'1.0-0'}} x {{item.cantidad}} = ${{item.producto.precio * item.cantidad | number:'1.0-0'}}</p>
-
         <!-- Botón para eliminar el producto del carrito -->
         <button (click)="eliminarDelCarrito(item.producto)">Eliminar</button>
       </div>
     </div>
-
     <!-- Total del carrito -->
     <!-- Calcula el total sumando el precio de todos los productos en el carrito -->
     <div class="cart-total">
