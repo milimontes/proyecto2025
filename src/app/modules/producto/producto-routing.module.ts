@@ -21,7 +21,7 @@ const routes: Routes = [
 },
 
 {
-  path:"zapatillas",component:AccesoriosComponent
+  path:"zapatillas",component:ZapatillasComponent
 },
 
 ];
