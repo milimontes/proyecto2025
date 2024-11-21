@@ -30,19 +30,6 @@
             <input [(ngModel)]="usuarios.email" matInput placeholder="Ej: juanhernandez67@gmail.com" required>
         </mat-form-field>
 
-        <!-- Campo de selección para el rol del usuario -->
-        <mat-form-field>
-            <!-- Etiqueta del campo de selección de rol -->
-            <mat-label>Seleccione un rol:</mat-label>
-            <!-- Menú desplegable para seleccionar el rol de usuario -->
-            <mat-select [(ngModel)]="usuarios.rol" required>
-              <!-- Opción de rol: Administrador -->
-              <mat-option value="admin">Administrador</mat-option>
-              <!-- Opción de rol: Visitante -->
-              <mat-option value="vis">Visitante</mat-option>
-            </mat-select>
-        </mat-form-field>
-
         <!-- Campo de formulario para la contraseña del usuario -->
         <mat-form-field>
             <!-- Etiqueta del campo de contraseña -->

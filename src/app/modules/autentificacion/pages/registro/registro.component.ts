@@ -26,7 +26,7 @@ export class RegistroComponent {
     nombre: '',
     apellido: '',
     email: '',
-    rol: '',
+    rol: 'usuario',
     password: ''
   }
 
