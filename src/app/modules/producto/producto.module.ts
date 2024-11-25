@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { FormsModule } from '@angular/forms';
 // ARCHIVO DE RUTAS
 import { ProductoRoutingModule } from './producto-routing.module';
 
@@ -30,7 +30,8 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
   imports: [
     CommonModule,
     ProductoRoutingModule,
-    MatTabsModule
+    MatTabsModule,
+    FormsModule 
   ],
   exports: [
     ProductoComponent,
