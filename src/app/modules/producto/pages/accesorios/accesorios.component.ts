@@ -1,24 +1,35 @@
 import { Component } from '@angular/core';
+
 // Interfaz para representar cada producto en la tienda
 interface Producto {
   id: number;              // ID único del producto
   nombre: string;          // Nombre del producto
   precio: number;          // Precio del producto
   imagenUrl: string;       // URL de la imagen del producto
-  liked: boolean;          // Indica si el producto ha sido marcado con "me gusta"
+  liked: boolean;          // Estado del "me gusta" para cada producto
 }
+
 // Interfaz para representar un elemento en el carrito
 interface CarritoItem {
   producto: Producto;      // Producto que está en el carrito
   cantidad: number;        // Cantidad de ese producto en el carrito
 }
+
+// Interfaz para representar la información del pago
+interface Pago {
+  nombre: string;
+  numeroTarjeta: string;
+  fechaExpiracion: string;
+  cvv: string;
+}
+
 @Component({
   selector: 'app-accesorios',           // Selector utilizado en el HTML para este componente
   templateUrl: './accesorios.component.html', // Archivo HTML asociado al componente
   styleUrls: ['./accesorios.component.css']   // Archivo de estilos CSS asociado al componente
 })
 export class AccesoriosComponent {
-  // Array que contiene todos los productos disponibles en la tienda de accesorios
+  // Lista de productos disponibles en la tienda de accesorios
   productos: Producto[] = [
     { id: 1, nombre: 'CARTERITA PRACTICA', precio: 30000, imagenUrl: 'https://static.zara.net/assets/public/952c/8e73/141442dd844f/16201025218c/13514220800-e1/13514220800-e1.jpg?ts=1726759626402&w=563', liked: false },
     { id: 2, nombre: 'COLLAR', precio: 15000, imagenUrl: 'https://www.chanel.com/images/f_auto,w_512,h_512/etoile-filante-necklace-diamond-white-gold-packshot-default-j10813-9553428250654.jpg', liked: false },
@@ -31,54 +42,82 @@ export class AccesoriosComponent {
     { id: 9, nombre: 'BROCHE DE PELO', precio: 45000, imagenUrl: 'https://www.chanel.com/images/t_one////q_auto:good,f_auto,fl_lossy,dpr_1.1/w_480//ruban-brooch-white-white-gold-diamond-packshot-default-j60878-9553413046302.jpg', liked: false },
     { id: 10, nombre: 'ANILLO COCO CRUSH', precio: 35000, imagenUrl: 'https://www.chanel.com/images/t_one////q_auto:good,f_auto,fl_lossy,dpr_1.1/w_480//coco-crush-ring-white-white-gold-diamond-packshot-default-j12869-9557125988382.jpg', liked: false }
   ];
-  // Array que representa los productos añadidos al carrito de compras
+
+  // Carrito de compras
   carrito: CarritoItem[] = [];
-  // Propiedad para almacenar la URL de la imagen cuando se muestra en tamaño grande (modal)
-  imagenGrandeUrl: string | null = null;
-  /**
-   * Marca o desmarca un producto como "me gusta".
-   * @param producto Producto que se va a marcar o desmarcar
-   */
-  toggleLike(producto: Producto): void {
-    producto.liked = !producto.liked; // Cambia el estado de 'liked' de true a false o viceversa
-  }
-  /**
-   * Agrega un producto al carrito de compras. Si el producto ya existe en el carrito, incrementa la cantidad.
-   * @param producto Producto que se va a agregar al carrito
-   */
+
+  // Datos de pago
+  pago: Pago = { nombre: '', numeroTarjeta: '', fechaExpiracion: '', cvv: '' };
+  mostrarPago = false;  // Controla la visibilidad del modal de pago
+  pagoRealizado = false; // Indica si el pago fue realizado
+
+  imagenGrandeUrl: string | null = null;  // URL de la imagen en tamaño grande
+
+  // Función para agregar un producto al carrito
   agregarAlCarrito(producto: Producto): void {
     const itemEnCarrito = this.carrito.find(item => item.producto.id === producto.id);
     if (itemEnCarrito) {
-      itemEnCarrito.cantidad += 1; // Incrementa la cantidad si ya está en el carrito
+      itemEnCarrito.cantidad += 1;  // Incrementa la cantidad si el producto ya está en el carrito
     } else {
-      this.carrito.push({ producto, cantidad: 1 }); // Agrega el producto al carrito si no estaba antes
+      this.carrito.push({ producto, cantidad: 1 });  // Añade el producto al carrito
     }
   }
-  /**
-   * Elimina un producto del carrito de compras.
-   * @param producto Producto que se va a eliminar del carrito
-   */
+
+  // Funciones para aumentar o reducir la cantidad de productos en el carrito
+  incrementarCantidad(item: CarritoItem): void {
+    item.cantidad++;  // Aumenta la cantidad
+  }
+
+  reducirCantidad(item: CarritoItem): void {
+    item.cantidad--;  // Reduce la cantidad
+    if (item.cantidad === 0) {
+      this.eliminarDelCarrito(item.producto);  // Elimina el producto si la cantidad es 0
+    }
+  }
+
+  // Función para eliminar un producto del carrito
   eliminarDelCarrito(producto: Producto): void {
     this.carrito = this.carrito.filter(item => item.producto.id !== producto.id);
   }
-  /**
-   * Calcula el costo total de los productos en el carrito.
-   * @returns El total del carrito en número
-   */
+
+  // Función para calcular el total del carrito
   calcularTotal(): number {
     return this.carrito.reduce((total, item) => total + item.producto.precio * item.cantidad, 0);
   }
-  /**
-   * Muestra la imagen en grande en un modal.
-   * @param imagenUrl URL de la imagen que se va a mostrar en grande
-   */
+
+  // Función para ver una imagen en grande
   verImagenGrande(imagenUrl: string): void {
-    this.imagenGrandeUrl = imagenUrl; // Almacena la URL de la imagen en grande
+    this.imagenGrandeUrl = imagenUrl;  // Asigna la URL al modal
   }
-  /**
-   * Cierra el modal de la imagen grande.
-   */
+
+  // Función para cerrar el modal de la imagen
   cerrarModal(): void {
-    this.imagenGrandeUrl = null; // Borra la URL para cerrar el modal
+    this.imagenGrandeUrl = null;  // Cierra el modal al limpiar la URL
+  }
+
+  // Función para mostrar el modal de pago
+  procesarPago(): void {
+    this.mostrarPago = true;  // Muestra el modal de pago
+  }
+
+  // Función para finalizar el pago
+  finalizarPago(formPago: any): void {
+    if (formPago.valid) {
+      this.pagoRealizado = true;  // Marca el pago como realizado
+      this.carrito = [];  // Limpia el carrito
+      this.mostrarPago = false;  // Cierra el modal de pago
+    } else {
+      alert('Por favor, completa todos los campos correctamente.');  // Muestra un mensaje de error si no es válido
+    }
+  }
+
+  // Función para cerrar el modal de pago
+  cerrarPago(): void {
+    this.mostrarPago = false;  // Cierra el modal de pago sin procesar el pago
+  }
+
+  // Función para alternar el estado de "Me gusta" de un producto
+  toggleLike(producto: Producto): void {
+    producto.liked = !producto.liked;  // Cambia el estado de "me gusta"
   }
 }

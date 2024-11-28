@@ -6,16 +6,16 @@ interface Producto {
   nombre: string;
   precio: number;
   imagenUrl: string;
-  liked: boolean;
+  liked: boolean; // Estado del "like" para cada producto
 }
 
-// Interfaz para representar un elemento en el carrito
+// Interfaz para representar un elemento en el carrito de compras
 interface CarritoItem {
-  producto: Producto;
-  cantidad: number;
+  producto: Producto; // Producto dentro del carrito
+  cantidad: number; // Cantidad de ese producto en el carrito
 }
 
-// Interfaz para representar el pago
+// Interfaz para representar la información del pago
 interface Pago {
   nombre: string;
   numeroTarjeta: string;
@@ -25,10 +25,11 @@ interface Pago {
 
 @Component({
   selector: 'app-indumentaria',
-  templateUrl: './indumentaria.component.html',
-  styleUrls: ['./indumentaria.component.css'],
+  templateUrl: './indumentaria.component.html', // Enlace a la plantilla HTML
+  styleUrls: ['./indumentaria.component.css'],  // Enlace a la hoja de estilos CSS
 })
 export class IndumentariaComponent {
+  // Lista de productos disponibles en la tienda
   productos: Producto[] = [
     { id: 1, nombre: 'CHALECO SASTRE CON LINO', precio: 89990, imagenUrl: 'https://static.zara.net/assets/public/5458/7d75/f2e840aab447/e67cc835f434/09929521505-e1/09929521505-e1.jpg', liked: false },
     { id: 2, nombre: 'POLLERA DENIM', precio: 30000, imagenUrl: 'https://static.zara.net/assets/public/81c1/2542/eb8a48498463/85c034143100/08290007401-e1/08290007401-e1.jpg', liked: false },
@@ -42,75 +43,77 @@ export class IndumentariaComponent {
     { id: 10, nombre: 'BERMUDA JOGGER', precio: 40000, imagenUrl: 'https://static.zara.net/assets/public/a4ad/1585/365f48a3b771/1f486241fb0a/03854410800-e1/03854410800-e1.jpg', liked: false }
   ];
 
-  carrito: CarritoItem[] = [];
-  imagenGrandeUrl: string | null = null;
-  mostrarPago = false;
-  pagoRealizado = false; // Propiedad para mostrar el mensaje de felicitación
-  pago: Pago = { nombre: '', numeroTarjeta: '', fechaExpiracion: '', cvv: '' };
+  carrito: CarritoItem[] = [];  // Lista de productos añadidos al carrito
+  imagenGrandeUrl: string | null = null; // URL de la imagen grande del producto
+  mostrarPago = false;  // Variable que controla la visibilidad del modal de pago
+  pagoRealizado = false; // Flag que indica si el pago ha sido realizado
+  pago: Pago = { nombre: '', numeroTarjeta: '', fechaExpiracion: '', cvv: '' };  // Datos del pago
 
   // Función para agregar un producto al carrito
   agregarAlCarrito(producto: Producto): void {
     const itemEnCarrito = this.carrito.find(item => item.producto.id === producto.id);
     if (itemEnCarrito) {
-      itemEnCarrito.cantidad += 1;
+      itemEnCarrito.cantidad += 1;  // Incrementa la cantidad si el producto ya está en el carrito
     } else {
-      this.carrito.push({ producto, cantidad: 1 });
+      this.carrito.push({ producto, cantidad: 1 });  // Añade el producto al carrito con cantidad 1
     }
   }
 
-  // Funciones para manejar el carrito
+  // Funciones para gestionar la cantidad de productos en el carrito
   incrementarCantidad(item: CarritoItem): void {
-    item.cantidad++;
+    item.cantidad++;  // Incrementa la cantidad del producto en el carrito
   }
 
   reducirCantidad(item: CarritoItem): void {
-    item.cantidad--;
+    item.cantidad--;  // Decrementa la cantidad del producto en el carrito
     if (item.cantidad === 0) {
-      this.eliminarDelCarrito(item.producto);
+      this.eliminarDelCarrito(item.producto);  // Elimina el producto si la cantidad llega a cero
     }
   }
 
+  // Función para eliminar un producto del carrito
   eliminarDelCarrito(producto: Producto): void {
-    this.carrito = this.carrito.filter(item => item.producto.id !== producto.id);
+    this.carrito = this.carrito.filter(item => item.producto.id !== producto.id);  // Filtra los productos del carrito
   }
 
+  // Función para calcular el total del carrito
   calcularTotal(): number {
-    return this.carrito.reduce((total, item) => total + item.producto.precio * item.cantidad, 0);
+    return this.carrito.reduce((total, item) => total + item.producto.precio * item.cantidad, 0);  // Suma el precio de todos los productos en el carrito
   }
 
-  // Función para abrir la imagen en grande
+  // Función para ver una imagen más grande de un producto
   verImagenGrande(imagenUrl: string): void {
-    this.imagenGrandeUrl = imagenUrl;
+    this.imagenGrandeUrl = imagenUrl;  // Asigna la URL de la imagen al modal
   }
 
-  // Función para cerrar el modal de imagen
+  // Función para cerrar el modal de la imagen
   cerrarModal(): void {
-    this.imagenGrandeUrl = null;
+    this.imagenGrandeUrl = null;  // Limpia la URL de la imagen para cerrar el modal
   }
 
-  // Función para procesar el pago
+  // Función para mostrar el modal de pago
   procesarPago(): void {
-    this.mostrarPago = true;
+    this.mostrarPago = true;  // Muestra el modal de pago
   }
 
   // Función para finalizar el pago
   finalizarPago(formPago: any): void {
     if (formPago.valid) {
-      this.pagoRealizado = true; // Se muestra el mensaje de éxito
-      this.carrito = [];
-      this.mostrarPago = false;
+      this.pagoRealizado = true;  // Si el formulario es válido, marca el pago como realizado
+      this.carrito = [];  // Limpia el carrito
+      this.mostrarPago = false;  // Cierra el modal de pago
     } else {
-      alert('Por favor, completa todos los campos correctamente.');
+      alert('Por favor, completa todos los campos correctamente.');  // Muestra un mensaje de error si el formulario no es válido
     }
   }
 
   // Función para cerrar el modal de pago
   cerrarPago(): void {
-    this.mostrarPago = false;
+    this.mostrarPago = false;  // Cierra el modal de pago sin procesar el pago
   }
 
-  // Función para alternar el estado de "Me gusta"
+  // Función para alternar el estado de "Me gusta" de un producto
   toggleLike(producto: Producto): void {
-    producto.liked = !producto.liked;  // Cambia el estado de liked entre true y false
+    producto.liked = !producto.liked;  // Cambia el estado de liked entre verdadero y falso
   }
 }

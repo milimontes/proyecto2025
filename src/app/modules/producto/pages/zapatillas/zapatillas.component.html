@@ -1,67 +1,132 @@
+<!-- Sección de Zapatillas -->
 <div class="zapatillas-section">
-  <!-- Título de la sección -->
+  <!-- Título de la sección de Zapatillas -->
   <h2>Zapatillas</h2>
-  <!-- Contenedor de las tarjetas de productos -->
+
+  <!-- Contenedor de tarjetas para los productos -->
   <div class="card-container">
-    <!-- Iteración sobre cada producto en la lista "productos" -->
+    <!-- Iteración sobre la lista de productos -->
+    <!-- *ngFor recorre la lista de productos y genera una tarjeta para cada uno -->
     <div *ngFor="let producto of productos" class="card">
-      
-      <!-- Imagen del producto -->
-      <!-- Se muestra la imagen desde la URL de "producto.imagenUrl" -->
-      <!-- Al hacer clic en la imagen, llama a "verImagenGrande" para abrir la imagen en un modal -->
+      <!-- Imagen del producto con la posibilidad de ver una versión más grande al hacer clic -->
       <img [src]="producto.imagenUrl" alt="{{producto.nombre}}" class="card-image" (click)="verImagenGrande(producto.imagenUrl)" />
       
-      <!-- Contenedor del contenido de la tarjeta -->
       <div class="card-content">
         <!-- Nombre del producto -->
         <h3>{{producto.nombre}}</h3>
-        <!-- Precio del producto, formateado como número sin decimales -->
+        
+        <!-- Precio del producto formateado como número -->
         <p class="price">${{producto.precio | number:'1.0-0'}}</p>
-        <!-- Botón de "Me gusta" -->
-        <!-- Al hacer clic, llama a "toggleLike" para cambiar el estado de "liked" -->
+        
+        <!-- Botón de Like (Cambia entre "Like" y "Liked" dependiendo del estado) -->
         <button class="like-button" (click)="toggleLike(producto)">
           {{producto.liked ? '♥ Liked' : '♡ Like'}}
         </button>
-        <!-- Botón de agregar al carrito -->
-        <!-- Llama a "agregarAlCarrito" al hacer clic, para añadir el producto al carrito -->
+        
+        <!-- Botón de Agregar al Carrito -->
         <button class="add-to-cart-button" (click)="agregarAlCarrito(producto)">
           Agregar al Carrito
         </button>
       </div>
     </div>
   </div>
-  <!-- Modal para mostrar la imagen en grande -->
-  <!-- Solo se muestra si "imagenGrandeUrl" no es nulo -->
+
+  <!-- Modal que muestra una versión más grande de la imagen al hacer clic -->
   <div *ngIf="imagenGrandeUrl" class="modal" (click)="cerrarModal()">
-    <!-- Imagen en grande, usando la URL de "imagenGrandeUrl" -->
+    <!-- Imagen agrandada -->
     <img [src]="imagenGrandeUrl" alt="Producto en grande" class="modal-image" />
   </div>
-  <!-- Sección del carrito de compras -->
-  <!-- Solo se muestra si hay productos en el carrito -->
+
+  <!-- Sección del Carrito de Compras, solo se muestra si hay artículos en el carrito -->
   <div *ngIf="carrito.length > 0" class="cart-section">
-    <!-- Título del carrito -->
+    <!-- Título de la sección del carrito -->
     <h2>Tu Carrito</h2>
-    <!-- Iteración sobre cada elemento del carrito -->
+
+    <!-- Iteración sobre los artículos del carrito -->
     <div *ngFor="let item of carrito" class="cart-item">
-      <!-- Imagen del producto en el carrito -->
-      <img [src]="item.producto.imagenUrl" alt="{{item.producto.nombre}}" class="cart-item-image" />
-      <!-- Contenedor de detalles del producto en el carrito -->
-      <div>
-        <!-- Nombre del producto en el carrito -->
+      <div style="position: relative;">
+        <!-- Imagen del producto en el carrito -->
+        <img [src]="item.producto.imagenUrl" alt="{{item.producto.nombre}}" class="cart-item-image" />
+        
+        <!-- Botón de incremento de cantidad -->
+        <button (click)="incrementarCantidad(item)" class="cart-item-button">
+          +
+        </button>
+        
+        <!-- Botón de decremento de cantidad -->
+        <button (click)="reducirCantidad(item)" class="cart-item-button">
+          -
+        </button>
+      </div>
+      
+      <!-- Detalles del artículo en el carrito -->
+      <div class="cart-item-details">
         <h4>{{item.producto.nombre}}</h4>
-        <!-- Cantidad del producto en el carrito -->
         <p>Cantidad: {{item.cantidad}}</p>
-        <!-- Subtotal por producto en el carrito -->
-        <!-- Calcula el subtotal multiplicando el precio por la cantidad -->
-        <p>${{item.producto.precio | number:'1.0-0'}} x {{item.cantidad}} = ${{item.producto.precio * item.cantidad | number:'1.0-0'}}</p>
-        <!-- Botón para eliminar el producto del carrito -->
-        <button (click)="eliminarDelCarrito(item.producto)">Eliminar</button>
+        <p>Total: ${{item.producto.precio * item.cantidad | number:'1.0-0'}}</p>
+        
+        <!-- Botón para eliminar el artículo del carrito -->
+        <button class="remove-item" (click)="eliminarDelCarrito(item.producto)">Eliminar</button>
       </div>
     </div>
-    <!-- Total del carrito -->
-    <!-- Calcula el total sumando el precio de todos los productos en el carrito -->
+
+    <!-- Muestra el total del carrito -->
     <div class="cart-total">
       <h3>Total: ${{calcularTotal() | number:'1.0-0'}}</h3>
     </div>
+    
+    <!-- Botón de pago -->
+    <button class="pay-button" (click)="procesarPago()">Pagar</button>
+  </div>
+
+  <!-- Modal de Pago, solo visible si el carrito tiene productos -->
+  <div *ngIf="mostrarPago" class="modal">
+    <div class="payment-section">
+      <h2>Selecciona tu Método de Pago</h2>
+      
+      <!-- Formulario para ingresar los datos de pago -->
+      <form #formPago="ngForm" (ngSubmit)="finalizarPago(formPago)">
+        <!-- Nombre en tarjeta -->
+        <div class="form-group">
+          <label for="nombre">Nombre en la tarjeta:</label>
+          <input type="text" id="nombre" [(ngModel)]="pago.nombre" name="nombre" required placeholder="Juan Pérez" />
+        </div>
+
+        <!-- Número de tarjeta -->
+        <div class="form-group">
+          <label for="tarjeta">Número de Tarjeta:</label>
+          <input type="text" id="tarjeta" [(ngModel)]="pago.numeroTarjeta" name="tarjeta" required pattern="\d{16}" placeholder="1234 5678 9876 5432" />
+        </div>
+
+        <!-- Fecha de expiración de la tarjeta -->
+        <div class="form-group">
+          <label for="expiracion">Fecha de Expiración:</label>
+          <input type="month" id="expiracion" [(ngModel)]="pago.fechaExpiracion" name="expiracion" required />
+        </div>
+
+        <!-- Código de seguridad CVV -->
+        <div class="form-group">
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" [(ngModel)]="pago.cvv" name="cvv" required pattern="\d{3}" placeholder="123" />
+        </div>
+
+        <!-- Botones de acción para el formulario -->
+        <div class="payment-buttons">
+          <button type="submit" [disabled]="!formPago.valid">Confirmar Pago</button>
+          <button type="button" (click)="cerrarPago()">Cancelar</button>
+        </div>
+      </form>
+
+      <!-- Mensaje de error si el formulario no es válido -->
+      <div *ngIf="!formPago.valid" class="error-message">
+        <p><strong>Por favor, completa todos los campos correctamente.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje de éxito tras completar el pago -->
+  <div *ngIf="pagoRealizado" class="success-message">
+    <h2>¡Felicidades! Tu pago ha sido procesado con éxito.</h2>
+    <p>Gracias por tu compra. ¡Te esperamos pronto!</p>
   </div>
 </div>

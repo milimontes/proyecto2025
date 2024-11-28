@@ -1,86 +1,79 @@
+// Importaciones necesarias para el funcionamiento del componente
+
+// Component de Angular para crear el componente 'RegistroComponent'
 import { Component } from '@angular/core';
+
+// Importamos el modelo de Usuario que define la estructura del objeto de usuario
 import { Usuario } from 'src/app/models/usuario';
-// Servicio de Autentificación
+
+// Servicio para la autentificación de usuarios (iniciar sesión, registrar, etc.)
 import { AuthService } from '../../services/auth.service';
-// Servicio de Firestore
+
+// Servicio para interactuar con Firestore (base de datos en la nube de Firebase)
 import { FirestoreService } from 'src/app/modules/shared/services/firestore.service';
-// Servicio de rutas que otorga Angular
+
+// Servicio de rutas de Angular para la navegación entre vistas
 import { Router } from '@angular/router';
-// Importamos paquetería de criptación
+
+// Paquetería para la criptación de contraseñas (SHA-256)
 import * as CryptoJS from 'crypto-js';
-// Importamos paquetería de SweetAlert para alertas personalizadas
+
+// Paquetería para mostrar alertas personalizadas (SweetAlert)
 import Swal from 'sweetalert2';
 
+// Definición del componente
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-registro',  // Selector del componente que se usará en el HTML
+  templateUrl: './registro.component.html',  // Archivo de plantilla HTML
+  styleUrls: ['./registro.component.css']  // Archivo de estilos CSS
 })
 export class RegistroComponent {
-  // Este "hide" es para el input de contraseña
+  
+  // Variable que oculta o muestra el campo de la contraseña (por seguridad)
   hide = true;
 
-  // IMPORTACIÓN DEL MODELO / INTERFAZ
+  // Definición de un modelo de Usuario inicial
   usuarios: Usuario = {
     uid: '',
     nombre: '',
     apellido: '',
     email: '',
-    rol: 'usuario',
+    rol: 'usuario',  // Rol por defecto es 'usuario'
     password: ''
   }
 
-  // CREAR UNA COLECCIÓN QUE SOLO RECIBE OBJETOS DEL TIPO USUARIOS
+  // Colección de usuarios (se utiliza para almacenar temporalmente los datos antes de enviarlos)
   coleccionUsuarios: Usuario[] = [];
 
-  // Referenciamos a nuestros servicios
+  // Inyección de dependencias: Servicios que se utilizarán en este componente
   constructor(
-    public servicioAuth: AuthService, // métodos de autentificación
-    public servicioFirestore: FirestoreService, // vincula UID con la colección
-    public servicioRutas: Router // método de navegación
+    public servicioAuth: AuthService,  // Servicio para autentificación de usuarios
+    public servicioFirestore: FirestoreService,  // Servicio para interactuar con Firestore
+    public servicioRutas: Router  // Servicio de navegación
   ){}
 
-  // FUNCIÓN ASINCRONICA PARA EL REGISTRO
+  // Método asincrónico para el registro de usuarios
   async registrar(){
-    // CREDENCIALES = información que ingrese el usuario
-    //################################ LOCAL
-    /*
-    const credenciales = {
-      uid: this.usuarios.uid,
-      nombre: this.usuarios.nombre,
-      apellido: this.usuarios.apellido,
-      email: this.usuarios.email,
-      rol: this.usuarios.rol,
-      password: this.usuarios.password
-    }*/
-
-    // enviamos los nuevos registros por medio del método push a la colección
-    // this.coleccionUsuarios.push(credenciales);
-
-    // Notificamos al usuario el correcto registro
-    // alert("Te registraste con éxito :)");
-    // ############################### FIN LOCAL
-
+    // Crear las credenciales del usuario con los datos del formulario
     const credenciales = {
       email: this.usuarios.email,
       password: this.usuarios.password
     }
 
-    // constante "res" = resguarda una respuesta
+    // Realizar el registro con el servicio de autenticación
     const res = await this.servicioAuth.registrar(credenciales.email, credenciales.password)
-    // El método THEN nos devuelve la respuesta esperada por la promesa
     .then(res => {
+      // Al registrarse correctamente, mostrar una alerta de éxito
       Swal.fire({
         title: "¡Buen trabajo!",
         text: "¡Se pudo registrar con éxito! :)",
         icon: "success"
       });
 
-      // Accedemos al servicio de rutas -> método navigate
-      // método NAVIGATE = permite dirigirnos a diferentes vistas
+      // Redirigir al usuario a la vista 'inicio' después del registro exitoso
       this.servicioRutas.navigate(['/inicio']);
     })
-    // El método CATCH toma una falla y la vuelve un ERROR
+    // En caso de error al registrar, mostrar una alerta de error
     .catch(error => {
       Swal.fire({
         title: "¡Oh no!",
@@ -89,39 +82,34 @@ export class RegistroComponent {
       });
     })
 
+    // Obtener el UID del usuario autenticado
     const uid = await this.servicioAuth.obtenerUid();
-
     this.usuarios.uid = uid;
 
-    // ENCRIPTACIÓN DE LA CONTRASEÑA DE USUARIO
-    /**
-     * SHA-256: Es un algoritmo de hashing seguro que toma una entrada (en este caso la
-     * contraseña) y produce una cadena de caracteres HEXADECIMAL que representa su HASH
-     * 
-     * toString(): Convierte el resultado del hash en una cadena de caracteres legible
-     */
+    // Encriptar la contraseña del usuario antes de guardarla
     this.usuarios.password = CryptoJS.SHA256(this.usuarios.password).toString();
 
-    // this.guardarUsuario() guardaba la información del usuario en la colección
+    // Guardar el usuario en Firestore
     this.guardarUsuario();
 
-    // Llamamos a la función limpiarInputs() para que se ejecute
+    // Limpiar los campos del formulario después de registrar
     this.limpiarInputs();
   }
 
-  // función para agregar NUEVO USUARIO
+  // Método para guardar el usuario en la base de datos Firestore
   async guardarUsuario(){
     this.servicioFirestore.agregarUsuario(this.usuarios, this.usuarios.uid)
     .then(res => {
-      console.log(this.usuarios);
+      console.log(this.usuarios);  // Imprimir el usuario en la consola si el guardado es exitoso
     })
     .catch(err => {
-      console.log('Error =>', err);
+      console.log('Error =>', err);  // Imprimir un error si falla el guardado
     })
   }
 
-  // Función para vaciar el formulario
+  // Método para limpiar los campos del formulario
   limpiarInputs(){
+    // Reseteamos todas las propiedades del objeto 'usuarios' para limpiar el formulario
     const inputs = {
       uid: this.usuarios.uid = '',
       nombre: this.usuarios.nombre = '',

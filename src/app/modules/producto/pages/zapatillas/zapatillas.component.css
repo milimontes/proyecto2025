@@ -1,120 +1,282 @@
-/* Estilos Generales */
 body {
-  font-family: Arial, sans-serif; /* Tipografía estándar de la página */
-  background-color: #F2F2F2; /* Fondo blanco más claro para una apariencia limpia */
-  margin: 0; /* Elimina márgenes predeterminados del navegador */
-  padding: 0; /* Elimina padding predeterminado */
+  font-family: Arial, sans-serif;
+  background-color: #F2F2F2;
+  margin: 0;
+  padding: 0;
 }
+
 /* Navbar */
 nav {
-  background-color: #4D4D4D; /* Gris más claro para el fondo de la barra de navegación */
-  color: #FFFFFF; /* Texto blanco en la barra de navegación */
-  padding: 15px; /* Espaciado interior para el navbar */
-  text-align: center; /* Centra el texto dentro del navbar */
+  background-color: #4D4D4D;
+  color: #FFFFFF;
+  padding: 15px;
+  text-align: center;
 }
+
 nav a {
-  color: #FFFFFF; /* Color blanco para los enlaces */
-  text-decoration: none; /* Elimina el subrayado predeterminado en los enlaces */
-  margin: 0 25px; /* Espaciado horizontal entre los enlaces */
-  font-size: 1.1em; /* Tamaño de fuente ligeramente mayor para los enlaces */
+  color: #FFFFFF;
+  text-decoration: none;
+  margin: 0 25px;
+  font-size: 1.1em;
 }
+
 nav a:hover {
-  text-decoration: underline; /* Subraya el enlace al pasar el cursor */
+  text-decoration: underline;
 }
+
 /* Sección de Indumentaria */
 .indumentaria-section {
-  text-align: center; /* Centra el contenido de la sección */
-  padding: 30px; /* Espaciado interior de la sección */
+  text-align: center;
+  padding: 30px;
 }
+
 /* Contenedor de tarjetas */
 .card-container {
-  display: flex; /* Usa flexbox para organizar las tarjetas */
-  flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas */
-  gap: 25px; /* Espacio adicional entre las tarjetas */
-  justify-content: center; /* Centra las tarjetas horizontalmente */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
 }
-/* Modal (ventana emergente) */
-.modal {
-  position: fixed; /* Posición fija para que se quede en la pantalla al hacer scroll */
-  top: 0; /* Se coloca en la parte superior de la pantalla */
-  left: 0; /* Se coloca a la izquierda de la pantalla */
-  width: 100%; /* Ocupa el ancho completo de la pantalla */
-  height: 100%; /* Ocupa el alto completo de la pantalla */
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con opacidad para el modal */
-  display: flex; /* Usa flexbox para centrar el contenido dentro del modal */
-  align-items: center; /* Centra el contenido verticalmente */
-  justify-content: center; /* Centra el contenido horizontalmente */
-}
-.modal-image {
-  max-width: 80%; /* Limita el tamaño máximo de la imagen a un 80% del ancho de la pantalla */
-  max-height: 80%; /* Limita el tamaño máximo de la imagen a un 80% del alto de la pantalla */
-}
-/* Tarjetas */
+
 .card {
-  background-color: #FFFFFF; /* Fondo blanco para las tarjetas de productos */
-  border: 1px solid #E0E0E0; /* Borde gris claro para las tarjetas */
-  border-radius: 8px; /* Bordes redondeados */
-  width: 260px; /* Ancho fijo para las tarjetas */
-  overflow: hidden; /* Evita que el contenido se desborde */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Sombra sutil para dar profundidad */
-  transition: transform 0.3s ease; /* Transición suave cuando la tarjeta cambia de estado */
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  width: 260px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
 }
+
 .card:hover {
-  transform: translateY(-5px); /* Efecto de desplazamiento hacia arriba cuando se pasa el cursor sobre la tarjeta */
+  transform: translateY(-5px);
 }
+
 .card-image {
-  width: 100%; /* Hace que la imagen ocupe todo el ancho de la tarjeta */
-  height: 240px; /* Altura fija para las imágenes de los productos */
-  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
 }
+
 .card-content {
-  padding: 20px; /* Espaciado interior dentro de la tarjeta */
+  padding: 20px;
 }
+
 .card h3 {
-  font-size: 1.2em; /* Tamaño de fuente para el nombre del producto */
-  margin: 0; /* Elimina el margen superior e inferior */
-  color: #4D4D4D; /* Gris oscuro más claro para el texto */
+  font-size: 1.2em;
+  margin: 0;
+  color: #4D4D4D;
 }
+
 .price {
-  color: #A0A0A0; /* Color gris claro para el precio */
-  font-size: 1.1em; /* Tamaño de fuente ligeramente mayor para el precio */
-  margin: 8px 0; /* Margen vertical para separar el precio del nombre */
+  color: #A0A0A0;
+  font-size: 1.1em;
+  margin: 8px 0;
 }
-/* Botón de Like */
+
 .like-button {
-  background-color: #FFB7A6; /* Color de fondo coral claro para el botón de "Me gusta" */
-  color: white; /* Color de texto blanco */
-  border: none; /* Sin borde visible */
-  padding: 10px 20px; /* Espaciado interior del botón */
-  font-size: 1em; /* Tamaño de fuente para el botón */
-  border-radius: 4px; /* Bordes ligeramente redondeados */
-  cursor: pointer; /* Cursor de mano para indicar que es clickeable */
-  transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
-  margin: 5px; /* Espaciado adicional entre los botones */
+  background-color: #FFB7A6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px;
 }
+
 .like-button:hover {
-  background-color: #FF9788; /* Color de fondo coral más oscuro al pasar el cursor */
+  background-color: #FF9788;
 }
-/* Botones destacados */
-button, .btn {
-  background-color: #A4D5DF; /* Color de fondo azul turquesa claro para los botones */
-  color: white; /* Color de texto blanco */
-  border: none; /* Sin borde visible */
-  padding: 12px 25px; /* Más espaciado en el botón para hacerlo más grande */
-  border-radius: 5px; /* Bordes redondeados */
+
+.add-to-cart-button {
+  background-color: #A4D5DF;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: #8FC3CC;
+}
+
+/* Modal de imagen agrandada */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+/* Carrito */
+.cart-section {
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Botón "Pagar" */
+.pay-button {
+  background-color: #E0E0E0; /* Gris claro */
+  color: white;
+  padding: 14px 30px; /* Tamaño ajustado */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: all 0.3s ease-in-out;
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.pay-button:hover {
+  background-color: #BDBDBD; /* Gris más oscuro */
+  transform: translateY(-3px); /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Aumenta la sombra */
+}
+
+.pay-button:active {
+  background-color: #9E9E9E; /* Gris más oscuro al hacer clic */
+  transform: translateY(-1px); /* Reducción del efecto de elevación */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reducir la sombra al presionar */
+}
+
+/* Confirmación de Pago */
+.success-message {
+  background-color: #FFB7A6;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.payment-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="button"] {
+  background-color: #FFB7A6; /* Rosado para el botón Cancelar */
+  margin-top: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Estilo para los botones de suma y resta (Mercado Libre style) */
+.cart-item button {
+  background-color: #FFF; /* Fondo blanco para los botones */
+  border: 1px solid #E0E0E0; /* Borde gris claro */
+  color: #4D4D4D; /* Color de texto gris oscuro */
+  font-size: 1.5em; /* Tamaño de la fuente */
+  width: 40px; /* Ancho de los botones */
+  height: 40px; /* Alto de los botones */
+  border-radius: 50%; /* Hacer los botones circulares */
+  display: flex;
+  justify-content: center; /* Centrar el contenido horizontalmente */
+  align-items: center; /* Centrar el contenido verticalmente */
   cursor: pointer; /* Cursor de mano */
-  font-size: 1.1em; /* Tamaño de fuente ligeramente mayor para los botones */
-  transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
-  margin: 5px; /* Espaciado adicional entre los botones */
+  transition: all 0.3s ease; /* Transición suave */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
 }
-button:hover, .btn:hover {
-  background-color: #8FC3CC; /* Color de fondo azul turquesa más oscuro al pasar el cursor */
+
+/* Estilo para los iconos dentro de los botones */
+.cart-item button:focus {
+  outline: none; /* Eliminar el contorno de foco */
 }
-/* Texto de enlaces */
-a {
-  color: #A4D5DF; /* Azul turquesa claro para los enlaces */
-  text-decoration: none; /* Elimina el subrayado predeterminado en los enlaces */
+
+.cart-item button:hover {
+  background-color: #A4D5DF; /* Fondo azul cuando pasa el ratón */
+  border-color: #A4D5DF; /* Cambiar el borde al mismo color azul */
+  color: #FFF; /* Cambiar el color de texto a blanco */
 }
-a:hover {
-  text-decoration: underline; /* Subraya el enlace al pasar el cursor */
+
+.cart-item button:active {
+  background-color: #8FC3CC; /* Fondo azul más oscuro al hacer clic */
+  border-color: #8FC3CC; /* Cambiar el borde a un tono más oscuro */
+}
+
+/* Asegurarnos de que la imagen esté correctamente posicionada */
+.cart-item-image {
+  width: 100px; /* Ajustamos el tamaño de la imagen */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  position: relative; /* Esto es necesario para posicionar los botones sobre la imagen */
+  margin-right: 20px;
 }

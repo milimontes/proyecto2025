@@ -1,282 +1,291 @@
+/* Estilos generales para el cuerpo de la página */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #F2F2F2;
-  margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif;  /* Tipo de fuente para el texto */
+  background-color: #F2F2F2;      /* Color de fondo general */
+  margin: 0;                      /* Elimina los márgenes predeterminados */
+  padding: 0;                     /* Elimina los paddings predeterminados */
 }
 
-/* Navbar */
+/* Estilos para la barra de navegación */
 nav {
-  background-color: #4D4D4D;
-  color: #FFFFFF;
-  padding: 15px;
-  text-align: center;
+  background-color: #4D4D4D; /* Color de fondo de la barra de navegación */
+  color: #FFFFFF;            /* Color de texto blanco */
+  padding: 15px;             /* Relleno interno de la barra de navegación */
+  text-align: center;        /* Centra el texto dentro de la barra */
 }
 
 nav a {
-  color: #FFFFFF;
-  text-decoration: none;
-  margin: 0 25px;
-  font-size: 1.1em;
+  color: #FFFFFF;              /* Color del texto de los enlaces */
+  text-decoration: none;       /* Elimina el subrayado de los enlaces */
+  margin: 0 25px;              /* Espacio horizontal entre los enlaces */
+  font-size: 1.1em;            /* Tamaño de la fuente de los enlaces */
 }
 
 nav a:hover {
-  text-decoration: underline;
+  text-decoration: underline;  /* Subraya los enlaces cuando el ratón pasa sobre ellos */
 }
 
 /* Sección de Indumentaria */
 .indumentaria-section {
-  text-align: center;
-  padding: 30px;
+  text-align: center;   /* Centra el texto dentro de la sección */
+  padding: 30px;        /* Relleno interno de la sección */
 }
 
-/* Contenedor de tarjetas */
+/* Contenedor de las tarjetas de productos */
 .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: center;
+  display: flex;               /* Utiliza Flexbox para el diseño */
+  flex-wrap: wrap;             /* Permite que las tarjetas se envuelvan a nuevas líneas */
+  gap: 25px;                   /* Espacio entre las tarjetas */
+  justify-content: center;     /* Centra las tarjetas en la página */
 }
 
+/* Estilo para cada tarjeta de producto */
 .card {
-  background-color: #FFFFFF;
-  border: 1px solid #E0E0E0;
-  border-radius: 8px;
-  width: 260px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  background-color: #FFFFFF;      /* Fondo blanco para las tarjetas */
+  border: 1px solid #E0E0E0;      /* Borde gris claro */
+  border-radius: 8px;             /* Bordes redondeados */
+  width: 260px;                   /* Ancho fijo de la tarjeta */
+  overflow: hidden;               /* Evita que el contenido se desborde */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Sombra suave alrededor de la tarjeta */
+  transition: transform 0.3s ease; /* Efecto de transición para animaciones */
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px);   /* Eleva la tarjeta cuando el ratón pasa sobre ella */
 }
 
 .card-image {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
+  width: 100%;                   /* Hace que la imagen ocupe todo el ancho de la tarjeta */
+  height: 240px;                 /* Establece una altura fija para la imagen */
+  object-fit: cover;             /* Hace que la imagen cubra el espacio sin deformarse */
 }
 
 .card-content {
-  padding: 20px;
+  padding: 20px;  /* Relleno interno de la sección de contenido de la tarjeta */
 }
 
 .card h3 {
-  font-size: 1.2em;
-  margin: 0;
-  color: #4D4D4D;
+  font-size: 1.2em;   /* Tamaño de la fuente del título */
+  margin: 0;           /* Elimina el margen alrededor del título */
+  color: #4D4D4D;      /* Color de texto gris oscuro */
 }
 
 .price {
-  color: #A0A0A0;
-  font-size: 1.1em;
-  margin: 8px 0;
+  color: #A0A0A0;      /* Color gris claro para el precio */
+  font-size: 1.1em;    /* Tamaño de la fuente del precio */
+  margin: 8px 0;       /* Espacio arriba y abajo del precio */
 }
 
+/* Estilos para el botón "Me gusta" */
 .like-button {
-  background-color: #FFB7A6;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1em;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 5px;
+  background-color: #FFB7A6;  /* Color de fondo rosado para el botón */
+  color: white;                /* Texto en blanco */
+  border: none;                /* Sin borde */
+  padding: 10px 20px;          /* Relleno del botón */
+  font-size: 1em;              /* Tamaño de la fuente */
+  border-radius: 4px;          /* Bordes redondeados */
+  cursor: pointer;            /* Cambia el cursor a mano al pasar por encima */
+  transition: background-color 0.3s ease; /* Efecto de transición para el cambio de color */
+  margin: 5px;                 /* Espacio alrededor del botón */
 }
 
 .like-button:hover {
-  background-color: #FF9788;
+  background-color: #FF9788;   /* Color más oscuro cuando se pasa el ratón por encima */
 }
 
+/* Estilos para el botón "Añadir al carrito" */
 .add-to-cart-button {
-  background-color: #A4D5DF;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.2em;
-  transition: background-color 0.3s ease;
+  background-color: #A4D5DF;   /* Color de fondo azul claro */
+  color: white;                 /* Texto blanco */
+  border: none;                 /* Sin borde */
+  padding: 15px 30px;           /* Relleno del botón */
+  border-radius: 5px;           /* Bordes redondeados */
+  cursor: pointer;             /* Cambia el cursor a mano */
+  font-size: 1.2em;             /* Tamaño de la fuente */
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
 }
 
 .add-to-cart-button:hover {
-  background-color: #8FC3CC;
+  background-color: #8FC3CC;   /* Color más oscuro cuando se pasa el ratón por encima */
 }
 
-/* Modal de imagen agrandada */
+/* Estilos para el modal de imagen agrandada */
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed;                     /* Fija el modal en la pantalla */
+  top: 0;                              /* Se coloca en la parte superior */
+  left: 0;                             /* Se coloca a la izquierda */
+  width: 100%;                         /* El modal ocupa todo el ancho de la pantalla */
+  height: 100%;                        /* El modal ocupa toda la altura de la pantalla */
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo negro con opacidad */
+  display: flex;                       /* Utiliza Flexbox para centrar el contenido */
+  align-items: center;                 /* Centra el contenido verticalmente */
+  justify-content: center;             /* Centra el contenido horizontalmente */
 }
 
 .modal-image {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 80%;     /* Establece el tamaño máximo de la imagen al 80% del modal */
+  max-height: 80%;    /* Establece la altura máxima de la imagen al 80% del modal */
 }
 
-/* Carrito */
+/* Estilos para la sección del carrito */
 .cart-section {
-  background-color: #fff;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;     /* Fondo blanco */
+  padding: 20px;               /* Relleno interno */
+  margin-top: 20px;            /* Espacio superior */
+  border-radius: 8px;          /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
+/* Estilo para cada item en el carrito */
 .cart-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+  display: flex;               /* Utiliza Flexbox para el diseño */
+  align-items: center;         /* Alinea los elementos al centro verticalmente */
+  margin-bottom: 20px;         /* Espacio inferior entre los productos */
 }
 
+/* Imagen de los productos en el carrito */
 .cart-item-image {
-  width: 80px;
+  width: 80px;                 /* Establece el tamaño de la imagen */
   height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-right: 20px;
+  object-fit: cover;           /* Asegura que la imagen no se deforme */
+  border-radius: 8px;          /* Bordes redondeados en la imagen */
+  margin-right: 20px;          /* Espacio a la derecha de la imagen */
 }
 
 .cart-total {
-  text-align: right;
-  font-size: 18px;
-  font-weight: bold;
+  text-align: right;           /* Alinea el total a la derecha */
+  font-size: 18px;             /* Tamaño de la fuente del total */
+  font-weight: bold;           /* Hace el texto en negrita */
 }
 
-/* Botón "Pagar" */
+/* Estilos para el botón de "Pagar" */
 .pay-button {
-  background-color: #E0E0E0; /* Gris claro */
-  color: white;
-  padding: 14px 30px; /* Tamaño ajustado */
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.2em;
-  font-weight: bold;
+  background-color: #E0E0E0; /* Color gris claro */
+  color: white;              /* Texto blanco */
+  padding: 14px 30px;        /* Tamaño del botón */
+  border: none;              /* Sin borde */
+  border-radius: 8px;        /* Bordes redondeados */
+  cursor: pointer;          /* Cambia el cursor al pasar sobre el botón */
+  font-size: 1.2em;          /* Tamaño de la fuente */
+  font-weight: bold;         /* Texto en negrita */
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  transition: all 0.3s ease-in-out;
-  margin: 10px 0;
-  width: 100%;
-  text-align: center;
+  transition: all 0.3s ease-in-out; /* Transición suave para el cambio de color */
+  margin: 10px 0;            /* Espacio alrededor del botón */
+  width: 100%;               /* El botón ocupa todo el ancho */
+  text-align: center;        /* Centra el texto dentro del botón */
 }
 
 .pay-button:hover {
-  background-color: #BDBDBD; /* Gris más oscuro */
-  transform: translateY(-3px); /* Efecto de elevación al pasar el ratón */
+  background-color: #BDBDBD; /* Color gris más oscuro cuando pasa el ratón */
+  transform: translateY(-3px); /* Efecto de elevación */
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Aumenta la sombra */
 }
 
 .pay-button:active {
-  background-color: #9E9E9E; /* Gris más oscuro al hacer clic */
-  transform: translateY(-1px); /* Reducción del efecto de elevación */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reducir la sombra al presionar */
+  background-color: #9E9E9E; /* Color gris más oscuro cuando se hace clic */
+  transform: translateY(-1px); /* Reduce la elevación */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reduce la sombra */
 }
 
-/* Confirmación de Pago */
+/* Estilos para el mensaje de éxito tras el pago */
 .success-message {
-  background-color: #FFB7A6;
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  font-size: 1.2em;
-  text-align: center;
+  background-color: #FFB7A6;    /* Fondo rosado */
+  color: white;                  /* Texto blanco */
+  padding: 20px;                 /* Relleno interno */
+  border-radius: 10px;           /* Bordes redondeados */
+  margin-top: 20px;              /* Espacio superior */
+  font-size: 1.2em;              /* Tamaño de la fuente */
+  text-align: center;            /* Centra el texto */
 }
 
+/* Estilos para la sección de pago */
 .payment-section {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  width: 400px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;      /* Fondo blanco */
+  padding: 30px;                /* Relleno interno */
+  border-radius: 8px;           /* Bordes redondeados */
+  width: 400px;                 /* Ancho fijo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
+/* Estilos para los campos del formulario */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 15px;          /* Espacio inferior en cada grupo de campos */
 }
 
 label {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  display: block;
+  font-size: 16px;              /* Tamaño de la fuente de las etiquetas */
+  font-weight: bold;            /* Texto en negrita */
+  margin-bottom: 5px;           /* Espacio inferior */
+  display: block;               /* Hace que las etiquetas sean bloque */
 }
 
 input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  width: 100%;                  /* El campo de entrada ocupa todo el ancho */
+  padding: 10px;                /* Relleno interno */
+  font-size: 16px;              /* Tamaño de la fuente */
+  border: 1px solid #ccc;       /* Borde gris claro */
+  border-radius: 5px;           /* Bordes redondeados */
 }
 
 button[type="button"] {
-  background-color: #FFB7A6; /* Rosado para el botón Cancelar */
-  margin-top: 5px;
+  background-color: #FFB7A6;    /* Fondo rosado para el botón "Cancelar" */
+  margin-top: 5px;               /* Espacio superior */
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3;    /* Fondo azul al pasar el ratón */
 }
 
+/* Estilos para los mensajes de error */
 .error-message {
-  color: #dc3545;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 10px;
+  color: #dc3545;               /* Color rojo para los mensajes de error */
+  font-size: 14px;               /* Tamaño pequeño para el texto */
+  text-align: center;            /* Centra el texto */
+  margin-top: 10px;              /* Espacio superior */
 }
 
-/* Estilo para los botones de suma y resta (Mercado Libre style) */
+/* Estilos para los botones de suma y resta en el carrito */
 .cart-item button {
-  background-color: #FFF; /* Fondo blanco para los botones */
-  border: 1px solid #E0E0E0; /* Borde gris claro */
-  color: #4D4D4D; /* Color de texto gris oscuro */
-  font-size: 1.5em; /* Tamaño de la fuente */
-  width: 40px; /* Ancho de los botones */
-  height: 40px; /* Alto de los botones */
-  border-radius: 50%; /* Hacer los botones circulares */
-  display: flex;
-  justify-content: center; /* Centrar el contenido horizontalmente */
-  align-items: center; /* Centrar el contenido verticalmente */
-  cursor: pointer; /* Cursor de mano */
-  transition: all 0.3s ease; /* Transición suave */
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1;
+  background-color: #FFF;       /* Fondo blanco */
+  border: 1px solid #E0E0E0;    /* Borde gris claro */
+  color: #4D4D4D;               /* Texto gris oscuro */
+  font-size: 1.5em;             /* Tamaño grande para los botones */
+  width: 40px;                  /* Ancho fijo */
+  height: 40px;                 /* Alto fijo */
+  border-radius: 50%;           /* Hace los botones circulares */
+  display: flex;                /* Flexbox para centrar el contenido */
+  justify-content: center;      /* Centra el contenido horizontalmente */
+  align-items: center;          /* Centra el contenido verticalmente */
+  cursor: pointer;             /* Cambia el cursor a mano */
+  transition: all 0.3s ease;    /* Transición suave */
+  position: absolute;           /* Posicionamiento absoluto */
+  top: 10px;                    /* Posiciona el botón en la parte superior */
+  left: 10px;                   /* Posiciona el botón a la izquierda */
+  z-index: 1;                   /* Asegura que el botón esté encima de otros elementos */
 }
 
-/* Estilo para los iconos dentro de los botones */
+/* Estilos para los iconos dentro de los botones de suma y resta */
 .cart-item button:focus {
-  outline: none; /* Eliminar el contorno de foco */
+  outline: none;               /* Elimina el borde de enfoque al hacer clic */
 }
 
 .cart-item button:hover {
-  background-color: #A4D5DF; /* Fondo azul cuando pasa el ratón */
-  border-color: #A4D5DF; /* Cambiar el borde al mismo color azul */
-  color: #FFF; /* Cambiar el color de texto a blanco */
+  background-color: #A4D5DF;    /* Fondo azul al pasar el ratón */
+  border-color: #A4D5DF;        /* Cambia el borde al mismo color azul */
+  color: #FFF;                  /* Cambia el color de texto a blanco */
 }
 
 .cart-item button:active {
-  background-color: #8FC3CC; /* Fondo azul más oscuro al hacer clic */
-  border-color: #8FC3CC; /* Cambiar el borde a un tono más oscuro */
+  background-color: #8FC3CC;    /* Fondo azul más oscuro al hacer clic */
+  border-color: #8FC3CC;        /* Cambia el borde a un tono más oscuro */
 }
 
-/* Asegurarnos de que la imagen esté correctamente posicionada */
+/* Asegura que la imagen del producto en el carrito esté correctamente posicionada */
 .cart-item-image {
-  width: 100px; /* Ajustamos el tamaño de la imagen */
+  width: 100px;                 /* Establece un tamaño fijo para la imagen */
   height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  position: relative; /* Esto es necesario para posicionar los botones sobre la imagen */
-  margin-right: 20px;
+  object-fit: cover;            /* Asegura que la imagen cubra el espacio sin distorsionarse */
+  border-radius: 8px;           /* Bordes redondeados */
+  position: relative;           /* Necesario para posicionar los botones sobre la imagen */
+  margin-right: 20px;           /* Espacio a la derecha de la imagen */
 }
