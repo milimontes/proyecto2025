@@ -30,8 +30,10 @@ export class TableComponent {
     categoria: new FormControl('', Validators.required),
     alt: new FormControl('', Validators.required)
   });
+//Usa FormControl para cada input.Ej nonmbre d producto, etc
+//Usa FormGroup cuando necesites agrupar y gestionar el formulario.
 
-  constructor(public servicioCrud: CrudService) { }
+constructor(public servicioCrud: CrudService) { }
 
   ngOnInit(): void {
     // subscribe -> notifica constantemente los cambios actuales del sistema

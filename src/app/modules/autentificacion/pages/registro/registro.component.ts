@@ -33,6 +33,8 @@ export class RegistroComponent {
   hide = true;
 
   // Definición de un modelo de Usuario inicial
+  //Usuario: Define la estructura del objeto Usuario (campos como nombre, email), 
+  //que representa un registro en la base de datos.
   usuarios: Usuario = {
     uid: '',
     nombre: '',
@@ -61,6 +63,8 @@ export class RegistroComponent {
     }
 
     // Realizar el registro con el servicio de autenticación
+    //await: Suspende la ejecución hasta que la promesa del método registrar se resuelva.
+
     const res = await this.servicioAuth.registrar(credenciales.email, credenciales.password)
     .then(res => {
       // Al registrarse correctamente, mostrar una alerta de éxito
@@ -87,6 +91,7 @@ export class RegistroComponent {
     this.usuarios.uid = uid;
 
     // Encriptar la contraseña del usuario antes de guardarla
+    //CryptoJS: Para encriptar contraseñas con SHA-256.
     this.usuarios.password = CryptoJS.SHA256(this.usuarios.password).toString();
 
     // Guardar el usuario en Firestore
@@ -96,8 +101,13 @@ export class RegistroComponent {
     this.limpiarInputs();
   }
 
-  // Método para guardar el usuario en la base de datos Firestore
+  
   async guardarUsuario(){
+    // Método para guardar el usuario en la base de datos Firestore
+     //Guarda el objeto usuarios en la colección de Firestore.
+     //Utiliza un servicio personalizado (FirestoreService)
+     // para manejar la lógica de guardado.
+     //Si tiene éxito, imprime el usuario en la consola; si falla, registra un error.
     this.servicioFirestore.agregarUsuario(this.usuarios, this.usuarios.uid)
     .then(res => {
       console.log(this.usuarios);  // Imprimir el usuario en la consola si el guardado es exitoso

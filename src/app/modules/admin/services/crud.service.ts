@@ -36,7 +36,7 @@ export class CrudService {
   crearProducto(producto: Producto, url: string){
     return new Promise(async (resolve, reject) => {
       try{
-        // Creamos número identificativo para el producto en la base de datos
+        // se crea el id que es un identificador de producto unico 
         const idProducto = this.database.createId();
 
         // Asignamos ID creado al atributo idProducto de la interfaz "Producto"
@@ -53,9 +53,10 @@ export class CrudService {
       }
     })
   }
-
   // OBTENER productos
   obtenerProducto(){
+    //mostrar los productos
+    //Recupera todos los productos de la colección producto de Firestore.
     // snapshotChanges -> toma una captura del estado de los datos
     // pipe -> funciona como una tubería que retorna el nuevo arreglo de datos
     // map -> "mapea" o recorre esa nueva información
@@ -64,12 +65,14 @@ export class CrudService {
   }
 
   // EDITAR productos
+  //Actualiza los datos de un producto específico en Firestore, identificado por su ID.
   modificarProducto(idProducto: string, nuevaData: Producto){
-    // accedemos a la colección, buscamos por ID y actualizamos información
+  // accedemos a la colección, buscamos por ID y actualizamos información (precio)
     return this.database.collection('producto').doc(idProducto).update(nuevaData);
   }
 
   // ELIMINAR productos
+  //Elimina tanto el documento del producto en Firestore como su imagen asociada en Firebase Storage.
   eliminarProducto(idProducto: string, imagenUrl: string){
     return new Promise((resolve, reject) => {
       try{
@@ -79,7 +82,7 @@ export class CrudService {
         // Definimos referencia local desde el almacenamiento de Storage
         const referenciaImagen = ref(storage, imagenUrl);
 
-        // Eliminamos la imagen desde el almacenamiento
+        // Se usa deleteObject para eliminar la imagen y luego elimina el producto.
         deleteObject(referenciaImagen)
         .then((res) => {
           // Accedo a la colección, busco su ID y lo elimino

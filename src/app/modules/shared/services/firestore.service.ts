@@ -13,10 +13,12 @@ export class FirestoreService {
    * Respetará la estructura de datos de la interfaz Usuario
    */
   private usuariosCollection: AngularFirestoreCollection<Usuario>
+  //Permite agregar usuarios a la colección usuarios siguiendo la estructura definida por la interfaz Usuario.
 
   constructor(private database: AngularFirestore) {
     this.usuariosCollection = this.database.collection<Usuario>('usuarios');
   }
+  //Define que los documentos de la colección seguirán la estructura de la interfaz Usuario.
 
   agregarUsuario(usuario: Usuario, id: string){
     /* Generamos nueva PROMESA y utiliza los métodos:
